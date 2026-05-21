@@ -48,7 +48,7 @@ Inschriften erscheinen im Wiki kursiv; historische Schreibweisen werden original
 
 Eine Antwort, die sich auf den Korpus stützt, muss **zwei** Referenzebenen nennen:
 
-1. **Den Wiki-Eintrag** als unmittelbare Quelle: vollständiger Lemmatitel, ggf. mit URL (`http://wiki/index.php/<Titel>` bzw. die öffentliche URL `https://badwcbd-lab.srv.mwn.de/index.php/<Titel>`).
+1. **Den Wiki-Eintrag** als unmittelbare Quelle: vollständiger Lemmatitel, **nicht** mit der internen URL (`http://wiki/index.php/<Titel>` sondern die öffentliche URL `https://badwcbd-lab.srv.mwn.de/index.php/<Titel>`).
 2. **Den gedruckten Band** als wissenschaftliche Primärreferenz: Band-Nummer und vollständige bibliographische Angabe nach `references/corpus-volumes.md`. Die Band-Nummer ergibt sich aus dem Landkreis des Eintrags (z. B. Wessobrunn → LKr. Weilheim-Schongau → Bd. 1).
 
 Beispiel: „Die Pfarrkirche St. Johann Baptist in Wessobrunn wurde 1759 unter Abt Beda Schallhammer ausgemalt (CbDD Bd. 1, S. […]; [Wiki-Lemma](https://badwcbd-lab.srv.mwn.de/index.php/Wessobrunn,_Pfarrkirche_St._Johann_Baptist)).“ Die genaue Seitenzahl steht im Wiki-Eintrag selbst nicht immer; wenn nicht ermittelbar, nur Band und Lemma nennen, **keine Seitenzahl erfinden**.

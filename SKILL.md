@@ -3,7 +3,7 @@ name: deckenmalerei-lab-skill
 description: Use whenever the user asks about Baroque ceiling paintings in Bavaria — Deckenmalerei, Deckenfresko, Stuckdekoration, Quadratura, Wessobrunner Schule, Asam (Cosmas Damian, Egid Quirin), Matthäus Günther, Johann Baptist Zimmermann, Johann Evangelist Holzer, or similar painters and stuccators of the 17th–18th century in Oberbayern. Also trigger on the *Corpus der barocken Deckenmalerei in Deutschland* (CbDD, 14 volumes, Bauer/Rupprecht, Hirmer 1976–2010), on specific Bavarian churches/monasteries with painted ceilings (Wessobrunn, Andechs, Ettal, Diessen, Rott am Inn, Steinhausen, Wieskirche etc.), and on iconographic programs in Bavarian Baroque interiors. Use the Deckenmalerei Lab MCP server (`badwcbd-lab.srv.mwn.de/mcp`) for retrieval. Pair with the Iconclass MCP server when the user asks about iconography. Do NOT use for: Italian or Austrian Baroque ceilings, modern restoration techniques in general, or generic art-history questions not tied to this corpus.
 ---
 
-# Deckenmalerei Lab — Recherche im *Corpus der barocken Deckenmalerei*
+# Deckenmalerei Lab — Recherche im historischen *Corpus der barocken Deckenmalerei*
 
 Dieses Skill steuert Anfragen an das MediaWiki des *Corpus der barocken Deckenmalerei in Deutschland* (CbDD), das die 14 Bände der gedruckten Reihe (Bauer/Rupprecht, Hirmer 1976–2010) digital erschließt. Die Inhalte sind durchgängig deutsch und folgen einem festen Editionsschema; das Schema kennt zu lernen ist der wichtigste Schritt, um den Korpus effizient zu nutzen.
 
@@ -61,6 +61,12 @@ Niemals den Inhalt einer Wiki-Seite als eigene Forschungsleistung ausgeben. Niem
 - **Truncation respektieren:** Wiki-Seiten werden bei 50 000 Bytes abgeschnitten, mit Hinweis auf verfügbare Sektionen. In dem Fall nachschlagend per `section=N` weiterlesen, nicht erneut die ganze Seite anfordern.
 - **Mehrere Lemmata gleichzeitig:** Für Vergleichsfragen (z. B. „die drei Marienkirchen im LKr. Dachau“) `get-pages` mit `titles=[…]` (bis 50 Titel) statt mehrerer Einzelaufrufe.
 - **Kategorien als Einstieg:** Wenn der Nutzer thematisch sucht und die Wiki Kategorien pflegt (z. B. nach Landkreis oder Künstler), `get-category-members` ist oft schneller als Volltextsuche.
+
+## Abgrenzung zum modernen CbDD-Projekt
+
+Verwende in Antworten stets den Namen **„Deckenmalerei-Lab"**, um dieses Werkzeug klar vom modernen *Corpus der barocken Deckenmalerei in Deutschland*-Projekt zu unterscheiden. Das moderne CbDD-Projekt weitet die Erfassung auf ganz Deutschland aus; seine Hauptdatenbank ist [deckenmalerei.eu](https://www.deckenmalerei.eu/). Das Deckenmalerei-Lab ist im Rahmen dieses modernen Projekts entstanden, erschließt aber spezifisch die historischen 14 Druckbände für Bayern.
+
+Bei Fragen zu Deckenmalereien außerhalb Bayerns oder zum aktuellen Forschungsstand des Gesamtprojekts auf [deckenmalerei.eu](https://www.deckenmalerei.eu/) verweisen.
 
 ## Was dieses Skill nicht abdeckt
 

@@ -61,6 +61,7 @@ Niemals den Inhalt einer Wiki-Seite als eigene Forschungsleistung ausgeben. Niem
 - **Truncation respektieren:** Wiki-Seiten werden bei 50 000 Bytes abgeschnitten, mit Hinweis auf verfügbare Sektionen. In dem Fall nachschlagend per `section=N` weiterlesen, nicht erneut die ganze Seite anfordern.
 - **Mehrere Lemmata gleichzeitig:** Für Vergleichsfragen (z. B. „die drei Marienkirchen im LKr. Dachau“) `get-pages` mit `titles=[…]` (bis 50 Titel) statt mehrerer Einzelaufrufe.
 - **Kategorien als Einstieg:** Wenn der Nutzer thematisch sucht und die Wiki Kategorien pflegt (z. B. nach Landkreis oder Künstler), `get-category-members` ist oft schneller als Volltextsuche.
+- **Bildinhalte visuell analysieren:** Fragt der Nutzer nach dem *konkreten Bildinhalt* einer Decke (was ist dargestellt, Figuren, Komposition), holt `get-file-data` die Datei serverseitig und liefert eine skalierte Rendition inline als Bild — so ist eine echte visuelle Bildanalyse möglich, auch wenn der Client den Wiki-Host nicht direkt erreicht. MediaWiki rastert Bilder, SVG, PDF und DjVu; andere Dateitypen (Audio, Video, Binärdateien) erzeugen einen Fehler — dafür sowie für reine Metadaten oder eine Download-URL `get-file` verwenden. Den Hinweis auf diese tiefere CV-Bildanalyse sparsam einsetzen (Token schonen), aber bei Bildinhaltsfragen anbieten.
 
 ## Abgrenzung zum modernen CbDD-Projekt
 

@@ -53,6 +53,16 @@ CbDD-Artikel folgen **keinem** festen Schema. Sie verwenden frei formulierte, be
 
 Strukturierte Sachdaten stehen bei CbDD in den Vorlagen: `{{Artikel-modern}}` (Titel, Ort, Jahr, AutorIn, **deckenmalerei.eu-ID**) im Kopf und ein oder mehrere `{{Strukturdaten}}` (je `entity_id` für einen Datensatz, optional `wikidata_qid`). Diese IDs sind für die Zitierung wichtig (s. u.).
 
+## Strukturdaten: Wikidata-Integration nutzen
+
+Für **Fragen zu den Strukturdaten** (Verknüpfungen zwischen Malereien, Gebäuden und Personen; Ikonographie über Iconclass; Identität und Normdaten von Auftraggebern, Malern, Stuckatoren) nicht versuchen, deckenmalerei.eu direkt abzufragen, sondern die **(unvollständige) Wikidata-Integration** heranziehen:
+
+- Nahezu alle **Malereien mit Iconclass-Klassifikation**, fast alle **Gebäude** und fast alle **Personen** des CbDD haben einen Wikidata-Eintrag.
+- Diese Einträge tragen die Property **Deckenmalerei.eu ID** (`P10626`), die den Bezug zur `entity_id`/`ID` der `{{Strukturdaten}}`- bzw. `{{Artikel-modern}}`-Vorlagen herstellt — so lassen sich Wiki-Treffer und Wikidata-Objekte wechselseitig auflösen.
+- Es gibt einen regelmäßig aktualisierten **Dump**: <https://github.com/arthist-lmu/plafond3d/tree/main/dumps/deckenmalerei.eu/2026_04>. Er besteht aus drei miteinander in Bezug stehenden großen JSON-Dateien (zusammen ~33 MB) für Malereien, Gebäude und Personen.
+
+Die Abdeckung ist **unvollständig** — fehlt ein Wikidata-Eintrag oder eine `P10626`-Verknüpfung, die Lücke ehrlich benennen und auf den Wiki-Eintrag bzw. deckenmalerei.eu zurückfallen, nicht aus Allgemeinwissen ergänzen.
+
 ## Abkürzungen
 
 Die CBD-Texte verwenden ein etabliertes Abkürzungssystem (z. B. `LKr.` = Landkreis, `LHs` = Langhaus, `QSch.` = Querschiff, `OB` = Oberbayern, `SSch.` = Seitenschiff). Es gilt für den gedruckten Korpus; CbDD-Artikel sind freier formuliert. Die Bildfeldbezeichnungen sind besonders wichtig:
@@ -94,7 +104,7 @@ Verwende in Antworten stets den Namen **„Deckenmalerei-Lab"** für dieses Wiki
 - **CBD** — der abgeschlossene **gedruckte** Korpus *Corpus der barocken Deckenmalerei* (Bauer/Rupprecht, Hirmer 1976–2010), 14 Bände, **nur Oberbayern**. Festes Editionsschema, Band-/Seiten-Zitierung, geschützte Abbildungen.
 - **CbDD** — das **moderne, fortlaufende** *Corpus der barocken Deckenmalerei in Deutschland* für **ganz Deutschland**. Hauptpublikation ist die Online-Datenbank [deckenmalerei.eu](https://www.deckenmalerei.eu/); die Einträge sind ins Lab kopiert. Lockere Struktur, Zitierung über die Wiki-Seite **und** die deckenmalerei.eu-URL (aus der `ID`/`entity_id` der Vorlagen).
 
-Das Lab ist im Rahmen des modernen Projekts entstanden und enthält **beide** Bestände. Ordne jeden Treffer zunächst einem Korpus zu (Kategorie `CBD`/`CbDD` bzw. Vorlagen) und richte Struktur-Erwartung und Zitierweise danach aus. Für Deckenmalerei außerhalb Oberbayerns ist allein CbDD einschlägig; für tiefere Detailtiefe in Oberbayern oft CBD. Für den jeweils aktuellen Forschungsstand und weiterführende Datensätze auf [deckenmalerei.eu](https://www.deckenmalerei.eu/) verweisen.
+Das Lab ist im Rahmen des modernen Projekts entstanden und enthält **beide** Bestände. Ordne jeden Treffer zunächst einem Korpus zu (Kategorie `CBD`/`CbDD` bzw. Vorlagen) und richte Struktur-Erwartung und Zitierweise danach aus. Für Deckenmalerei außerhalb Oberbayerns ist allein CbDD einschlägig; für tiefere Detailtiefe in Oberbayern oft CBD. Für den jeweils aktuellen Forschungsstand und weiterführende Datensätze auf [deckenmalerei.eu](https://www.deckenmalerei.eu/) **verweisen** — die Datenbank als Quelle nennen, aber **nicht** anbieten, sie direkt abzufragen oder anderweitig mit ihr zu interagieren. Dieses Skill greift ausschließlich über den Lab-MCP-Server auf die Wiki-Kopie der Daten zu; eine eigene Schnittstelle zur deckenmalerei.eu-Datenbank gibt es hier nicht.
 
 ## Was dieses Skill nicht abdeckt
 

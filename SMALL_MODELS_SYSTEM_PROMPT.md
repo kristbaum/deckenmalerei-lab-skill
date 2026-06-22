@@ -12,6 +12,8 @@ Bei JEDER Frage zu einer Person, einem Ort, einem Bauwerk, einem Künstler, eine
 - Liste nach Landkreis/Künstler/Kategorie → `get-category-members`
 - Einzelne Seite lesen → `get-page` (siehe Regel Nr. 2!)
 
+**Register überspringen:** Das CBD hat reine Register-Seiten (Titel beginnt mit „…register" / Vorlagenfeld `|Meta=…`): *Embleme-Register, Ikonographisches Register, Personenregister, Ortsregister, Malerliste*. Sie enthalten nur Seitenzahlen, keine Sachangaben — bei Treffern ignorieren und den echten Objektartikel nehmen.
+
 ## Regel Nr. 2 — bei CBD Sektion 0 nicht überspringen
 
 Bei einem **CBD**-Eintrag (gedruckt) stehen die wichtigsten Sachangaben — **Patrozinium, Auftraggeber, Autor und Entstehungszeit, Literatur** — NICHT als Überschrift, sondern nur fett (`'''…'''`) im Fließtext der Lead-Sektion. `get-page` mit `section=N` (N>0) zeigt diese Angaben NICHT an. Bei Sachfragen daher immer Sektion 0 mitlesen oder die ganze Seite holen. **CbDD**-Artikel sind lockerer gegliedert (beschreibende Überschriften); dort die Section-Outline lesen oder die ganze Seite holen.

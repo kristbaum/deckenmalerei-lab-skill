@@ -23,12 +23,24 @@ Enthält die bibliografischen Strukturdaten des Eintrags und steuert die Kategor
 | `Lemma` | vollständiger Artikeltitel (`Ort, Bauwerk`) | ja |
 | `Ort` | Ortsname (→ Ortskategorie) | – |
 | `Typ` | `Sakral` oder `Profan` | – |
-| `Meta` | Metakategorie (z. B. `Ortsregister`) | – |
+| `Meta` | kennzeichnet Register-/Verzeichnisseiten statt Objektartikel (s. u.) | – |
 | `AutorIn1` … `AutorIn6` | AutorInnen (Nachname, Vorname); je eigene Kategorie | – |
 | `Chunk`, `Chunkseite` | PDF-Chunk und Seite darin (interne Navigation) | – |
 | `davor`, `danach` | Vorgänger-/Nachfolger-Lemma (Navigation) | – |
 
 **Nutzen für Antworten:** `Originalseitenvon`/`-bis` liefern die exakte Seitenspanne im Druckband — damit lässt sich die Zitierung mit Seitenzahl belegen, ohne zu raten. `Band` ergibt direkt die Bandzuordnung (siehe `corpus-volumes.md`), `AutorIn1…6` die BearbeiterInnen.
+
+### Register-Seiten erkennen und überspringen
+
+Neben den Objektartikeln enthält das CBD reine **Register-/Verzeichnisseiten**. Sie sind doppelt erkennbar: am Titelpräfix (z. B. „Ortsregister …") und am Feld `|Meta=…` in `{{Artikel}}`. Mögliche Werte:
+
+- `Meta=Embleme-Register`
+- `Meta=Ikonographisches Register`
+- `Meta=Personenregister`
+- `Meta=Ortsregister`
+- `Meta=Malerliste`
+
+Diese Seiten enthalten nur Verweise mit Druckseitenzahlen, **keine** inhaltlichen Sachangaben — für fast alle Recherchen wertlos. In Trefferlisten überspringen und stattdessen den eigentlichen Objektartikel ansteuern. (Sie können umgekehrt als Index dienen, wenn man eine vollständige Liste aller Maler oder aller Orte braucht.)
 
 ### `Vorlage:BildQuelle` — Quellennachweis für CBD-Abbildungen
 

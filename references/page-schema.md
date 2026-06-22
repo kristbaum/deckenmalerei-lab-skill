@@ -1,6 +1,6 @@
-# Seitenschema der CbDD-Einträge
+# Seitenschema der CBD-Einträge
 
-Diese Datei beschreibt den Aufbau eines typischen Eintrags. Vor der ersten gezielten Sachfrage einmal lesen; danach reichen die Verweise aus dem SKILL.md.
+Diese Datei beschreibt den Aufbau eines typischen Eintrags des **gedruckten** Korpus (CBD). Sie gilt **nicht** für CbDD-Artikel des modernen Online-Korpus — die sind lockerer strukturiert (siehe SKILL.md und `templates-and-categories.md`). Vor der ersten gezielten Sachfrage zu einem CBD-Eintrag einmal lesen; danach reichen die Verweise aus dem SKILL.md.
 
 ## Lemma-Konvention
 
@@ -17,11 +17,11 @@ Maßgeblich ist der **alte Ortsname**, nicht die heutige Gemeindebezeichnung —
 
 ## Reihenfolge im Wiki — und warum sie wichtig ist
 
-Das gedruckte CbDD ordnet die Objekte alphabetisch nach Landkreis, innerhalb eines Ortes nach historischem Rang bzw. räumlicher Abfolge. Das Wiki übernimmt diese Reihenfolge. Eine Anfrage „die wichtigste Kirche in Ort X“ bekommt man also nicht direkt — aber die alphabetisch erste Kirche eines Ortes ist meist auch die ranghöchste (Pfarrkirche > Filialkirche > Kapelle).
+Das gedruckte CBD ordnet die Objekte alphabetisch nach Landkreis, innerhalb eines Ortes nach historischem Rang bzw. räumlicher Abfolge. Das Wiki übernimmt diese Reihenfolge. Eine Anfrage „die wichtigste Kirche in Ort X“ bekommt man also nicht direkt — aber die alphabetisch erste Kirche eines Ortes ist meist auch die ranghöchste (Pfarrkirche > Filialkirche > Kapelle).
 
 ## Zwei-Ebenen-Struktur einer Seite
 
-Eine CbDD-Seite hat **zwei** Strukturebenen, die sich nicht decken:
+Eine CBD-Seite hat **zwei** Strukturebenen, die sich nicht decken:
 
 ### Ebene 1 — formale Sektionen (`==…==`)
 
@@ -62,7 +62,7 @@ Der konstante Vorspann zur eigentlichen Sachangabe nennt zusätzlich **Bestimmun
 
 ## Maßangaben
 
-Das CbDD verwendet konventionelle Maßangaben, die für eine Antwort übernommen werden sollten:
+Das CBD verwendet konventionelle Maßangaben, die für eine Antwort übernommen werden sollten:
 
 - **Höhe** = Entfernung vom Fußboden zum höchsten Punkt des Deckenbildes
 - **Stich** = zusätzliche Höhenangabe bei Kuppeln
@@ -93,7 +93,7 @@ Bei Hauptbildern: Großbuchstaben in Hauptreihenfolge zum Hauptaltar; Begleitbil
 
 ## Maltechnik — terminologische Präzision
 
-Das CbDD unterscheidet konsequent:
+Das CBD unterscheidet konsequent:
 
 - **Fresko** = Kalkfarbmalerei „al fresco“ auf frischen Putz. Seccoaufmalungen, die in der Zeit zur Vollendung üblich waren, werden **nicht** eigens vermerkt.
 - **Seccoübermalungen** späterer Restaurierungen werden, soweit feststellbar, genannt.
@@ -121,4 +121,4 @@ Bei unbekannten Sigeln nicht raten — auf der Wiki-Seite *Zur Benutzung* unter 
 
 ## Bibelzitate
 
-Für lateinische Bibelzitate verwendet das CbDD die **Vulgata Clementina** (Madrider Neuausgabe 1965). Deutsche Übersetzungen folgen der **Jerusalemer Bibel** (1968). Bibelstellen werden mit den lateinischen Buchabkürzungen zitiert (`Mt`, `Lc`, `Io`, `Apoc` für Apokalypse, `Eccli` für Jesus Sirach usw.). Bei Antworten auf Deutsch oder Englisch ggf. das lateinische Sigel zusätzlich nennen, weil viele Sirach-/Weisheits-/Psalm-Verweise in den modernen Ausgaben verschoben numeriert sind.
+Für lateinische Bibelzitate verwendet das CBD die **Vulgata Clementina** (Madrider Neuausgabe 1965). Deutsche Übersetzungen folgen der **Jerusalemer Bibel** (1968). Bibelstellen werden mit den lateinischen Buchabkürzungen zitiert (`Mt`, `Lc`, `Io`, `Apoc` für Apokalypse, `Eccli` für Jesus Sirach usw.). Bei Antworten auf Deutsch oder Englisch ggf. das lateinische Sigel zusätzlich nennen, weil viele Sirach-/Weisheits-/Psalm-Verweise in den modernen Ausgaben verschoben numeriert sind.

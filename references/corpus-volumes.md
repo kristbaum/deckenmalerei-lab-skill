@@ -1,4 +1,6 @@
-# CbDD — Bandzuordnung und Zitierung
+# CBD — Bandzuordnung und Zitierung
+
+Diese Datei betrifft den **gedruckten** Korpus (CBD), nicht das moderne Online-Korpus CbDD (deckenmalerei.eu), das nicht nach Druckbänden gegliedert ist.
 
 Die 14 Bände (eigentlich 16 Teilbände) sind nach Landkreisen organisiert. Für eine korrekte Zitierung muss der Eintrag aus dem Wiki dem richtigen Band zugeordnet werden — die Zuordnung erfolgt über den Landkreis, der im Wiki-Eintrag in der ersten Zeile (administrative Zugehörigkeit) genannt wird.
 
@@ -56,13 +58,13 @@ Alle Bände sind unter dem Reihentitel *Corpus der barocken Deckenmalerei in Deu
 
 **Kurzform bei wiederholter Nennung im selben Antworttext:**
 
-> CbDD Bd. 1, S. […]
+> CBD Bd. 1, S. […]
 
-— oder, wenn das Skill-interne Sigel des Korpus selbst gemeint ist:
+— oder mit Herausgeberkurzform:
 
 > CBD (Bauer/Rupprecht 1976ff.), Bd. 1.
 
-Das interne Sigel des Korpus für Selbstverweise ist **CBD** (siehe *Zur Benutzung*, Abschnitt „Bibliographische Abkürzungen“). In Antworten an externe Nutzer ist **CbDD** klarer; intern in den Texten erscheint **CBD**.
+Das Sigel des gedruckten Korpus ist **CBD** (so auch die Wiki-Kategorie und der Abschnitt „Bibliographische Abkürzungen“ in *Zur Benutzung*). **Nicht verwechseln** mit **CbDD** — das ist das moderne Online-Korpus auf deckenmalerei.eu (eigene Wiki-Kategorie `CbDD`, keine Druckband-Zitierung). In Antworten konsequent CBD für den gedruckten Bestand verwenden.
 
 ## Bestimmung der Bandnummer aus einem Wiki-Eintrag
 

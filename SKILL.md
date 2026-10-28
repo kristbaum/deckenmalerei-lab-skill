@@ -1,6 +1,8 @@
 ---
 name: deckenmalerei-lab-skill
 description: Use whenever the user asks about Baroque ceiling paintings in Germany — Deckenmalerei, Deckenfresko, Stuckdekoration, 17th–18th-century painters and stuccators. The Deckenmalerei-Lab wiki holds TWO corpora: the printed *Corpus der barocken Deckenmalerei* (CBD, 14 vols, Bauer/Rupprecht, Hirmer 1976–2010, Oberbayern) AND the modern online *Corpus der barocken Deckenmalerei in Deutschland* (CbDD), covering all of Germany, published on deckenmalerei.eu. Also trigger on specific churches/monasteries/palaces with painted ceilings and on iconographic programs in Baroque interiors. Retrieve via the Deckenmalerei-Lab MCP server (`badwcbd-lab.srv.mwn.de/mcp`); pair with the Iconclass MCP server for iconography. Do NOT use for Italian or Austrian ceilings or generic art-history questions not tied to these corpora.
+license: GPL-3.0. LICENSE has complete terms
+compatibility: Requires the Deckenmalerei-Lab MCP connector (https://badwcbd-lab.srv.mwn.de/mcp). The Iconclass MCP connector is recommended for iconography.
 ---
 
 # Deckenmalerei-Lab — Recherche in CBD (gedruckt) und CbDD (online)
@@ -11,6 +13,16 @@ Dieses Skill steuert Anfragen an das MediaWiki des **Deckenmalerei-Lab**. Das La
 - **CbDD** — das moderne *Corpus der barocken Deckenmalerei in Deutschland*, das Deckenmalereien in **ganz Deutschland** erfasst. Es wird als Online-Datenbank auf [deckenmalerei.eu](https://www.deckenmalerei.eu/) publiziert und ins Lab kopiert. Lockerere Artikelstruktur, Text unter CC BY 4.0.
 
 Die Inhalte sind durchgängig deutsch. Der wichtigste erste Schritt jeder Recherche ist zu erkennen, **welches der beiden Korpora** einen Treffer trägt — daran hängen Struktur, Zitierweise und Reichweite. Der zuverlässigste Test sind die Kategorien `CBD` bzw. `CbDD` und die verwendeten Vorlagen (siehe `references/templates-and-categories.md`).
+
+## Voraussetzung: Deckenmalerei-Lab-Connector
+
+Dieses Skill setzt den MCP-Connector **Deckenmalerei-Lab** voraus (`https://badwcbd-lab.srv.mwn.de/mcp`; Werkzeuge wie `search-page`, `get-page`, `get-category-members`). Prüfe vor der ersten Recherche, ob diese Werkzeuge verfügbar sind. Fehlen sie, **nicht** aus dem Gedächtnis antworten oder auf Websuche ausweichen, sondern den Nutzer bitten, den Connector einzurichten:
+
+1. In Claude.ai *Einstellungen → Connectors* (bzw. *Customize → Connectors*) öffnen.
+2. „Benutzerdefinierten Connector hinzufügen“ wählen, Name `Deckenmalerei-Lab`, URL `https://badwcbd-lab.srv.mwn.de/mcp`.
+3. Den Connector im Chat aktivieren und die Frage erneut stellen.
+
+Für ikonographische Fragen zusätzlich den Iconclass-Connector empfehlen; ohne ihn bleibt die Recherche im Lab möglich.
 
 ## Sprache der Antwort
 

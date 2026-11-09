@@ -1,124 +1,98 @@
-# Seitenschema der CBD-Einträge
+# Seitenschema der CBD-Artikel
 
-Diese Datei beschreibt den Aufbau eines typischen Eintrags des **gedruckten** Korpus (CBD). Sie gilt **nicht** für CbDD-Artikel des modernen Online-Korpus — die sind lockerer strukturiert (siehe SKILL.md und `templates-and-categories.md`). Vor der ersten gezielten Sachfrage zu einem CBD-Eintrag einmal lesen; danach reichen die Verweise aus dem SKILL.md.
+Gilt nur für den **gedruckten** Korpus (CBD, Kopfvorlage `{{Artikel}}`). CbDD-Artikel (`{{Artikel-modern}}`) haben keine festen Labels — siehe SKILL.md.
 
-## Lemma-Konvention
+## Lemma
 
-Titelschema: `Ort, Bauwerk` — Komma als Trenner, anschließend die kirchliche Bezeichnung mit Patroziniums-Element.
+`Ort, Bauwerk` mit Patrozinium: `Wessobrunn, Pfarrkirche St. Johann Baptist`, `Iffeldorf, Pfarrkirche Hll. Vitus und Margareta`. Maßgeblich ist der **historische** Ortsname, nicht die heutige Gemeinde; Ortsteile oft mit Klammerzusatz: `Adelshausen (Weil), Kapelle St. Martin`.
 
-Beispiele:
+Die Artikel folgen der Reihenfolge des Drucks: Landkreis, darin Ort alphabetisch, innerhalb eines Ortes nach Rang (Pfarrkirche vor Filialkirche vor Kapelle). `davor`/`danach` in `{{Artikel}}` verlinken die Nachbarartikel.
 
-- `Wessobrunn, Pfarrkirche St. Johann Baptist`
-- `Wessobrunn, Kreuzbergkapelle Hl. Kreuz`
-- `Iffeldorf, Pfarrkirche Hll. Vitus und Margareta`
-- `Moorenweis, Pfarrkirche St. Sixtus`
+## Aufbau
 
-Maßgeblich ist der **alte Ortsname**, nicht die heutige Gemeindebezeichnung — das entspricht der Editionspraxis des gedruckten Korpus. Bei Auflösungsproblemen ggf. nach historischem Ortsnamen suchen.
+Formale Sektionen (`==…==`, in der Outline sichtbar) und fette Labels (`'''…:'''`, **nicht** in der Outline) überlagern sich:
 
-## Reihenfolge im Wiki — und warum sie wichtig ist
+| Ort | Label | Inhalt |
+|---|---|---|
+| Lead (Sektion 0) | — | Bestimmung des Baus, weltliche und kirchliche Zugehörigkeit, Rechtsstatus zur Zeit der Ausmalung |
+| | `Patrozinium:` | Weihetitel — ikonographisch zentral |
+| | `Zur Geschichte:` | (nur bei manchen Artikeln) |
+| | `Zum Bauwerk:` | Baugeschichte, Raumform, Abweichung von der Ostung |
+| | `Auftraggeber:` | namentlich, soweit durch Wappen, Rechnungen oder Rechtsstellung belegt |
+| | `Autor und Entstehungszeit:` | Signaturen, Quellen; stilkritische Zuschreibungen mit Begründung; unsichere als solche gekennzeichnet |
+| `== Befund ==` | `Träger der Deckenmalerei:` | Gewölbeform, Raumteil |
+| | `Rahmen:` | Stuck- oder gemalte Rahmung |
+| | `Technik:` | Fresko, Secco, Öl auf Leinwand; polychrom/monochrom |
+| | `Maße:` | oft als Tabelle (Bereich – Höhe – Maße) |
+| | `Erhaltungszustand und Restaurierungen:` | Schäden, Übermalungen, Restaurierungsdaten |
+| `== Beschreibung ==` | — | je Bild ein Absatz: Kürzel + Titel in Versalien, z. B. `B '''TRIUMPH MICHAELS''' …` |
+| `== Ikonographie ==` | — | Deutung, Quellenbezug, Programm; ikonographische Literatur im Text |
+| `== Quellen und Literatur ==` | — | Aufzählung; ungedruckte Quellen vor der Literatur |
 
-Das gedruckte CBD ordnet die Objekte alphabetisch nach Landkreis, innerhalb eines Ortes nach historischem Rang bzw. räumlicher Abfolge. Das Wiki übernimmt diese Reihenfolge. Eine Anfrage „die wichtigste Kirche in Ort X“ bekommt man also nicht direkt — aber die alphabetisch erste Kirche eines Ortes ist meist auch die ranghöchste (Pfarrkirche > Filialkirche > Kapelle).
+Varianten: *Beschreibung und Ikonographie* als eine Sektion; ältere Artikel mit `Erhaltungszustand:` statt des langen Labels; noch nicht bereinigte Artikel mit Labels ohne Doppelpunkt oder mit fehlendem Fettdruck.
 
-## Zwei-Ebenen-Struktur einer Seite
+**Konsequenz:** Für Auftraggeber, Maler, Datierung immer Sektion 0 lesen; `section=N` allein verliert diese Angaben. Für das Bildprogramm Sektion 0 (Intention des Auftraggebers) **und** *Ikonographie*.
 
-Eine CBD-Seite hat **zwei** Strukturebenen, die sich nicht decken:
+## Markup bereinigter Artikel
 
-### Ebene 1 — formale Sektionen (`==…==`)
+Bisher in Band 1; ältere Artikel haben es nicht.
 
-Sind in der MCP-Outline sichtbar (über `get-page metadata=true`). Typischerweise:
+### `{{Abk|…}}` — Abkürzungen
 
-| Sektion              | Inhalt |
-|----------------------|--------|
-| (Lead, Sektion 0)    | Sammelt **alle Sachangaben** zum Objekt (siehe Ebene 2) |
-| `Befund`             | Träger, Rahmung, Maltechnik, Maße, Erhaltungszustand, Restaurierungen |
-| `Beschreibung`       | Bildbeschreibung mit gattungsspezifischem Vokabular |
-| `Ikonographie`       | Ikonographische Auflösung, Quellenbezug, programmatische Lesart |
-| `Literatur`          | Bibliographie zum Bauwerk (am Ende) |
+`{{Abk|LHs}}` zeigt „LHs“ mit Tooltip „Langhaus“; `{{Abk|Bd|Bde.}}` zeigt „Bde.“. Bibliographische Kurztitel verlinken zusätzlich auf *Zur Benutzung#Bibliographische Abkürzungen*. In Antworten nur den angezeigten Text wiedergeben.
 
-Manche Seiten haben zusätzlich `Beschreibung und Ikonographie` zusammengefasst, oder einen abweichenden Zuschnitt — die Schemata variieren leicht zwischen den Bänden.
+Alle Auflösungen stehen in **`Modul:Abk/Daten`** (Lua-Tabelle, aus *Zur Benutzung* übernommen): `abk` mit `typ = "allg"` (allgemein), `"bibel"` (Vulgata-Sigel, z. B. `Eccli` = Jesus Sirach, `Apoc` = Apokalypse) und `"bibl"` (Kurztitel wie `LCI`, `Thieme-Becker`, `Dehio-Gall OB`, `Ripa 1603`, `KDB I OB`), dazu `bildfeld`. Einträge mit `generisch = true` (St., S., vgl., hl., Bd, Nr. …) werden im Text nicht getaggt, sind aber aufgelöst. Ein Kürzel, das dort fehlt, nicht raten.
 
-### Ebene 2 — Fett-Marker im Lead (`'''…'''`)
+### `{{DynamicInfoPopover|…}}` — Entitäten
 
-**Diese sind in keiner Section-Outline sichtbar.** Sie sind aber die kunsthistorisch wichtigsten Felder:
+```
+{{DynamicInfoPopover|<Text>|rolle=<Rolle>|bild=<Datei>|qid=<Q…>}}
+```
 
-| Fett-Marker                      | Was steht darunter |
-|----------------------------------|--------------------|
-| `'''Patrozinium'''`              | Weihetitel der Kirche/Kapelle — ikonographisch zentral |
-| `'''Zum Bauwerk'''`              | Summarische Baugeschichte und Raumform; bei Sakralräumen Abweichung von der Ostung |
-| `'''Auftraggeber'''`             | Namentlich, soweit durch Wappen/Belege/Rechtsstellung dokumentiert |
-| `'''Autor und Entstehungszeit'''`| Signaturen, schriftliche Belege; stilkritische Zuschreibungen kurz begründet; unsichere als solche gekennzeichnet |
-| `'''Befund'''`                   | (auch als Sektionsüberschrift möglich) |
-| `'''Beschreibung und Ikonographie'''` | (auch als Sektionsüberschrift möglich) |
-| `'''Literatur'''`                | (auch als Sektionsüberschrift möglich) |
-| `'''Ikonographische Literatur'''`| Wird **im Text** zitiert, nicht im Literaturverzeichnis am Ende |
+| Rolle | markiert |
+|---|---|
+| `Bauwerk` | den Text nach `Zum Bauwerk:` (der ganze Absatz) |
+| `Auftraggeber` | Auftraggeber im Absatz *Auftraggeber* |
+| `Maler`, `Stuckateur`, `Baumeister` | Künstler, v. a. in *Autor und Entstehungszeit* |
+| `Person` | andere historische Personen dort (Vermittler, Lehrer, Grundherr) |
+| `Deckenbild` | Bildfeld-Kürzel (`A`, `A<sub>2</sub>`) bzw. bei einem einzigen Bild dessen Titel |
 
-Der konstante Vorspann zur eigentlichen Sachangabe nennt zusätzlich **Bestimmung des Bauwerks, administrative (weltliche und kirchliche) Zugehörigkeit, rechtlichen Status zur Zeit der Ausmalung** — ohne Fett-Marker, einfach im ersten Absatz.
+`bild=` = Bilddatei des Deckenbilds (für `get-file-data`). `qid=` = Wikidata-Item, wird nach und nach von der Wikidata-Extraktion gesetzt — fehlt es, ist die Entität noch nicht verknüpft, nicht unbekannt. Zitierte Forscher (Schulten, Keim …), Signaturen und dargestellte Heilige sind nicht markiert.
 
-## Praktische Konsequenz für Werkzeugaufrufe
+## Bildfeld-Kürzel
 
-- **Sachfrage zu Auftraggeber/Datierung/Maler:** Sektion 0 mitlesen (oder ganze Seite holen). `section=2` für *Beschreibung* allein nützt nichts.
-- **Reine Beschreibungs-/Ikonographie-Frage:** Outline holen, dann gezielt die entsprechende Sektion. Das spart Kontext bei langen Einträgen (Moorenweis etwa 34 KB).
-- **Frage zum Bildprogramm gesamt:** Sektion 0 (für die Auftraggeber-Intention) **und** Sektion *Ikonographie* — die Programmlogik entfaltet sich oft erst aus beidem zusammen.
+Hauptbilder: Großbuchstaben in Richtung Hauptaltar (`A`, `B`, `C`). Begleitbilder: Index, im Uhrzeigersinn (`A<sub>1</sub>`, `C<sub>1–4</sub>`). Ein ikonographischer Zusammenhang kann die Reihenfolge überschreiben.
 
-## Maßangaben
+| Kürzel | Bedeutung |
+|---|---|
+| EB | Bilder an Emporenbrüstungen |
+| ED | Bilder an Emporendecken |
+| EU | Bilder an Emporenunterseiten |
+| EW | Wandbilder an der Rückwand der Empore |
+| K | Deckenbilder in Kapellen |
+| M | Medaillons |
+| N | Deckenbilder in nördlichen Seitenschiffen |
+| O | Deckenbilder in Oratorien |
+| S | Deckenbilder in Seitenschiffen bzw. südlichen Seitenschiffen |
+| U | Deckenbilder in Umgängen |
+| V | Deckenbilder in Vorräumen oder -hallen |
+| W | Bilder an Wänden |
+| Z | Zwickelbilder |
 
-Das CBD verwendet konventionelle Maßangaben, die für eine Antwort übernommen werden sollten:
+`(keine Abbildung)` hinter einem Kürzel: Bild beschrieben, aber nicht abgebildet. Bildunterschriften beginnen mit dem Kürzel (`A<sub>2</sub> Gericht`); Serien stehen in `<gallery>`.
 
-- **Höhe** = Entfernung vom Fußboden zum höchsten Punkt des Deckenbildes
-- **Stich** = zusätzliche Höhenangabe bei Kuppeln
-- **Länge / Breite** = in der Flächenprojektion gemessen
-- **Ansichtsrichtung** = bestimmt durch das Verhältnis von Bild und Raum (nicht durch Kompassrichtung)
+## Maße
 
-## Bildfeld-Codes
+- **Höhe** = Fußboden bis höchster Punkt des Deckenbilds; **Stich** = zusätzliche Höhe bei Kuppeln
+- **Länge × Breite** = in der Flächenprojektion
+- **Ansichtsrichtung** = aus dem Verhältnis von Bild und Raum, nicht nach Kompass
 
-Vollständige Liste der Spezialbezeichnungen für Begleitbilder:
+## Maltechnik
 
-| Code | Bedeutung |
-|------|-----------|
-| EB   | Bilder an Emporenbrüstungen |
-| ED   | Bilder an Emporendecken |
-| EU   | Bilder an Emporenunterseiten |
-| EW   | Wandbilder an der Rückwand der Empore |
-| K    | Deckenbilder in Kapellen |
-| M    | Medaillons |
-| N    | Deckenbilder in nördlichen Seitenschiffen |
-| O    | Deckenbilder in Oratorien |
-| S    | Deckenbilder in Seitenschiffen bzw. südlichen Seitenschiffen |
-| U    | Deckenbilder in Umgängen |
-| V    | Deckenbilder in Vorräumen oder -hallen |
-| W    | Bilder an Wänden |
-| Z    | Zwickelbilder |
-
-Bei Hauptbildern: Großbuchstaben in Hauptreihenfolge zum Hauptaltar; Begleitbilder im Uhrzeigersinn mit Kleinbuchstaben/Ziffern. Eine ikonographische Logik kann das Schema überschreiben (z. B. wenn die Lesefolge der Programmlogik widerspricht).
-
-## Maltechnik — terminologische Präzision
-
-Das CBD unterscheidet konsequent:
-
-- **Fresko** = Kalkfarbmalerei „al fresco“ auf frischen Putz. Seccoaufmalungen, die in der Zeit zur Vollendung üblich waren, werden **nicht** eigens vermerkt.
-- **Seccoübermalungen** späterer Restaurierungen werden, soweit feststellbar, genannt.
-- **Deckenbild „al secco“** (Ölfarbe o. ä. auf trockenen Träger) wird vom Fresko abgegrenzt — diese Unterscheidung ist wichtig und sollte in Antworten gewahrt bleiben.
-
-## Häufige bibliographische Sigel
-
-Im Fließtext der *Ikonographie*-Sektion erscheinen Abkürzungen, die in der Wiki-Seite *Zur Benutzung* aufgelöst sind. Die wichtigsten:
-
-| Sigel             | Steht für |
-|-------------------|-----------|
-| `LCI`             | Lexikon der christlichen Ikonographie (Kirschbaum/Braunfels) |
-| `LThK`            | Lexikon für Theologie und Kirche |
-| `RDK`             | Reallexikon zur deutschen Kunstgeschichte |
-| `Thieme-Becker`   | Allgemeines Lexikon der Bildenden Künstler |
-| `Dehio-Gall OB`   | Dehio-Handbuch Oberbayern (1964) |
-| `LA-Benz` / `LA-Graesse` | Legenda aurea (deutsche / lateinische Ausgabe) |
-| `Bibliotheca Sanctorum` | Lateran-Lexikon der Heiligen |
-| `PL` / `PG`       | Patrologia Latina / Graeca (Migne) |
-| `MGH`             | Monumenta Germaniae Historica |
-| `Ripa 1603` u. a. | Cesare Ripa, *Iconologia* (in jeweils benutzter Ausgabe) |
-| `KDB I OB`        | Die Kunstdenkmäler des Königreiches Bayern, Bd. Oberbayern |
-
-Bei unbekannten Sigeln nicht raten — auf der Wiki-Seite *Zur Benutzung* unter „Bibliographische Abkürzungen“ nachschlagen. Das ist eine vollständige, autoritative Liste.
+- **Fresko** = Kalkfarbmalerei auf frischem Putz; zeitgenössische Secco-Ergänzungen werden nicht eigens vermerkt.
+- **Seccoübermalungen** späterer Restaurierungen werden genannt, soweit feststellbar.
+- **al secco** (Öl o. ä. auf trockenem Grund) wird vom Fresko unterschieden — in Antworten wahren.
 
 ## Bibelzitate
 
-Für lateinische Bibelzitate verwendet das CBD die **Vulgata Clementina** (Madrider Neuausgabe 1965). Deutsche Übersetzungen folgen der **Jerusalemer Bibel** (1968). Bibelstellen werden mit den lateinischen Buchabkürzungen zitiert (`Mt`, `Lc`, `Io`, `Apoc` für Apokalypse, `Eccli` für Jesus Sirach usw.). Bei Antworten auf Deutsch oder Englisch ggf. das lateinische Sigel zusätzlich nennen, weil viele Sirach-/Weisheits-/Psalm-Verweise in den modernen Ausgaben verschoben numeriert sind.
+Latein nach der **Vulgata Clementina** (Madrid 1965), deutsch nach der **Jerusalemer Bibel** (1968), mit lateinischen Sigeln (`Mt`, `Lc`, `Io`, `Apoc`, `Eccli`). In Antworten das Sigel nennen; Psalmen und Weisheitsbücher sind in modernen Ausgaben teils anders gezählt.

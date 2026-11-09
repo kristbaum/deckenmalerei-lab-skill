@@ -1,0 +1,41 @@
+{
+  "skill_name": "deckenmalerei-lab-skill",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Wer hat die Ausmalung der Pfarrkirche St. Michael in Beuern bezahlt, und wer hat das Fresko gemalt?",
+      "expected_output": "Liest Sektion 0 von »Beuern, Pfarrkirche St. Michael« (CBD). Nennt Pfarrer Matthias Johann Nepomuk Bayerlacher als Auftraggeber und Johann Adam Schöpf (nicht Johann Nepomuk von Schöpf) als Maler, 1759, mit Begründung aus der Kirchenrechnung. Zitiert https://deckenmalerei-lab.badw.de/index.php/Beuern,_Pfarrkirche_St._Michael und CBD Bd. 1, S. 25–27. Keine {{Abk}}- oder {{DynamicInfoPopover}}-Syntax in der Antwort.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Was bedeutet »QSch.« im Corpus der barocken Deckenmalerei, und was heißt »Eccli« in einem Bibelverweis?",
+      "expected_output": "Holt Modul:Abk/Daten (statt Zur Benutzung zu lesen). QSch. = Querschiff; Eccli = Ecclesiasticus (Jesus Sirach), Vulgata-Sigel.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Was ist auf Bild A<sub>2</sub> in der Kapelle St. Martin in Adelshausen zu sehen? Beschreib das Bild.",
+      "expected_output": "Findet die Bilddatei über bild= des Popovers bzw. die Bildunterschrift (Band01_chunk001_p011_img002.jpg), ruft get-file-data auf und beschreibt das Bild; ergänzt die Beschreibung aus dem Artikel. Weist darauf hin, dass CBD-Abbildungen urheberrechtlich geschützt sind.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "Which ceilings did Matthäus Günther paint in the district of Weilheim-Schongau, according to the Lab?",
+      "expected_output": "Answers in English, keeps German terms. Uses CirrusSearch operators (e.g. incategory:\"Band 1\" with the painter's name, or insource:\"Autor und Entstehungszeit\") or the Personenregister (Band 1) as an index, then reads the hits with get-pages. Lists buildings with dates from 'Autor und Entstehungszeit', each with its wiki URL and CBD Bd. 1 page range. Does not answer from memory.",
+      "files": []
+    },
+    {
+      "id": 5,
+      "prompt": "Gibt es im Lab einen Eintrag zum Herrenhaus Altenkamp in Aschendorf? Wie zitiere ich ihn?",
+      "expected_output": "Erkennt den Artikel an {{Artikel-modern}} als CbDD, liest die Outline statt nach CBD-Labels zu suchen. Zitiert die Wiki-URL auf deckenmalerei-lab.badw.de und https://www.deckenmalerei.eu/<ID> aus der Vorlage; keine Band-/Seitenangabe.",
+      "files": []
+    },
+    {
+      "id": 6,
+      "prompt": "Welche Deckenmalereien im Landkreis Fürstenfeldbruck behandelt das gedruckte Corpus, und wo kann ich die Seiten im Original nachlesen?",
+      "expected_output": "Ordnet LKr. Fürstenfeldbruck Band 4 zu, nutzt die Kategorie »Band 4« bzw. das Ortsregister (Band 4) als Index. Nennt die frei zugängliche Heidelberger Digitalisierung (digi.ub.uni-heidelberg.de/diglit/cbdd_bd4) mit Seiten-Sprung.",
+      "files": []
+    }
+  ]
+}

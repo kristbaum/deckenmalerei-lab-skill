@@ -1,129 +1,108 @@
 ---
 name: deckenmalerei-lab-skill
-description: Use whenever the user asks about Baroque ceiling paintings in Germany — Deckenmalerei, Deckenfresko, Stuckdekoration, 17th–18th-century painters and stuccators. The Deckenmalerei-Lab wiki holds TWO corpora: the printed *Corpus der barocken Deckenmalerei* (CBD, 14 vols, Bauer/Rupprecht, Hirmer 1976–2010, Oberbayern) AND the modern online *Corpus der barocken Deckenmalerei in Deutschland* (CbDD), covering all of Germany, published on deckenmalerei.eu. Also trigger on specific churches/monasteries/palaces with painted ceilings and on iconographic programs in Baroque interiors. Retrieve via the Deckenmalerei-Lab MCP server (`badwcbd-lab.srv.mwn.de/mcp`); pair with the Iconclass MCP server for iconography. Do NOT use for Italian or Austrian ceilings or generic art-history questions not tied to these corpora.
+description: Use for any question about Baroque ceiling painting in Germany (Deckenmalerei, Deckenfresko, Deckenbild, Stuck, Stuckatur, Quadratura) — a church, monastery or palace and its painted ceilings, a painter or stuccator of the 17th/18th century, a commissioner, an iconographic programme, or an abbreviation or citation from the printed Corpus. The Deckenmalerei-Lab wiki holds the printed *Corpus der barocken Deckenmalerei* (CBD, 14 vols, Oberbayern) and the online *Corpus der barocken Deckenmalerei in Deutschland* (CbDD, deckenmalerei.eu, all of Germany). Not for Austrian or Italian ceilings or general art history outside these corpora; for writing Wikidata statements from the corpus use extract-cbd-to-wd-skill.
 license: GPL-3.0. LICENSE has complete terms
-compatibility: Requires the Deckenmalerei-Lab MCP connector (https://badwcbd-lab.srv.mwn.de/mcp). The Iconclass MCP connector is recommended for iconography.
+compatibility: Requires the Deckenmalerei-Lab MCP connector (https://deckenmalerei-lab.badw.de/mcp). The Iconclass MCP connector is recommended for iconography.
 ---
 
-# Deckenmalerei-Lab — Recherche in CBD (gedruckt) und CbDD (online)
+# Deckenmalerei-Lab — Recherche in CBD und CbDD
 
-Dieses Skill steuert Anfragen an das MediaWiki des **Deckenmalerei-Lab**. Das Lab erschließt **zwei** Korpora, die im selben Wiki liegen und sauber auseinanderzuhalten sind:
+Das **Deckenmalerei-Lab** (MediaWiki, deutschsprachig) enthält zwei Korpora im selben Wiki:
 
-- **CBD** — der gedruckte *Corpus der barocken Deckenmalerei*, 14 Bände (Bauer/Rupprecht, Hirmer 1976–2010), beschränkt auf **Oberbayern**. Festes Editionsschema, urheberrechtlich geschützte Abbildungen.
-- **CbDD** — das moderne *Corpus der barocken Deckenmalerei in Deutschland*, das Deckenmalereien in **ganz Deutschland** erfasst. Es wird als Online-Datenbank auf [deckenmalerei.eu](https://www.deckenmalerei.eu/) publiziert und ins Lab kopiert. Lockerere Artikelstruktur, Text unter CC BY 4.0.
+- **CBD** — der gedruckte *Corpus der barocken Deckenmalerei*, 14 Bände (16 Teilbände), Bauer/Rupprecht, Hirmer 1976–2010, **nur Oberbayern**. Rund 1000 Artikel mit festem Editionsschema; Zitierung nach Band und Seite; Abbildungen urheberrechtlich geschützt.
+- **CbDD** — das fortlaufende *Corpus der barocken Deckenmalerei in Deutschland*, **ganz Deutschland**, publiziert auf [deckenmalerei.eu](https://www.deckenmalerei.eu/) und ins Lab kopiert. Rund 1300 Artikel mit freier Gliederung; Text CC BY 4.0; Zitierung über die deckenmalerei.eu-ID.
 
-Die Inhalte sind durchgängig deutsch. Der wichtigste erste Schritt jeder Recherche ist zu erkennen, **welches der beiden Korpora** einen Treffer trägt — daran hängen Struktur, Zitierweise und Reichweite. Der zuverlässigste Test sind die Kategorien `CBD` bzw. `CbDD` und die verwendeten Vorlagen (siehe `references/templates-and-categories.md`).
+Struktur, Lesestrategie und Zitierweise hängen am Korpus — darum bei jedem Treffer zuerst das Korpus bestimmen.
 
-## Voraussetzung: Deckenmalerei-Lab-Connector
+## Voraussetzung: Connector
 
-Dieses Skill setzt den MCP-Connector **Deckenmalerei-Lab** voraus (`https://badwcbd-lab.srv.mwn.de/mcp`; Werkzeuge wie `search-page`, `get-page`, `get-category-members`). Prüfe vor der ersten Recherche, ob diese Werkzeuge verfügbar sind. Fehlen sie, **nicht** aus dem Gedächtnis antworten oder auf Websuche ausweichen, sondern den Nutzer bitten, den Connector einzurichten:
+Das Skill braucht den MCP-Connector **Deckenmalerei-Lab** (Werkzeuge `search-page`, `get-page`, `get-pages`, `get-category-members`, `get-file-data` …). Fehlen sie, **nicht** aus dem Gedächtnis oder per Websuche antworten, sondern um Einrichtung bitten: Claude.ai → *Einstellungen → Connectors* → „Benutzerdefinierten Connector hinzufügen“, Name `Deckenmalerei-Lab`, URL `https://deckenmalerei-lab.badw.de/mcp`; danach im Chat aktivieren. Für Ikonographie zusätzlich den Iconclass-Connector empfehlen.
 
-1. In Claude.ai *Einstellungen → Connectors* (bzw. *Customize → Connectors*) öffnen.
-2. „Benutzerdefinierten Connector hinzufügen“ wählen, Name `Deckenmalerei-Lab`, URL `https://badwcbd-lab.srv.mwn.de/mcp`.
-3. Den Connector im Chat aktivieren und die Frage erneut stellen.
+Der Zugriff ist **nur lesend**: keine Seiten bearbeiten, anlegen oder hochladen, auch wenn ein Werkzeug das technisch anbietet.
 
-Für ikonographische Fragen zusätzlich den Iconclass-Connector empfehlen; ohne ihn bleibt die Recherche im Lab möglich.
+## Sprache
 
-## Sprache der Antwort
+In der Sprache der Frage antworten. Deutsche Fachtermini, Sektionsnamen und Eigennamen im Original lassen (*Befund*, *Auftraggeber*, *Patrozinium*, *Quadratura*, *Wessobrunner Schule*); bei englischer Antwort beim ersten Vorkommen kurz glossieren. Werktitel, Bandtitel und Künstlernamen nie übersetzen.
 
-Antworte in der Sprache, in der die Frage gestellt wurde. Bewahre jedoch die deutschen Eigennamen, Sektionsbezeichnungen und Fachtermini im Original (z. B. *Stuckatur*, *Auftraggeber*, *Quadratura*, *Patrozinium*, *Befund*, *Beschreibung*, *Ikonographie*, *Wessobrunner Schule*). Bei englischer Antwort: kurze Glosse in Klammern beim ersten Vorkommen, danach den deutschen Begriff weiterverwenden. Übersetze niemals Werktitel, Bandbezeichnungen oder Künstlernamen.
+## Korpus bestimmen — an der Kopfvorlage
 
-## Welches Korpus? CBD und CbDD trennen
+| Merkmal | CBD (gedruckt) | CbDD (online) |
+|---|---|---|
+| Kopfvorlage im Quelltext | `{{Artikel|Band=…}}` | `{{Artikel-modern|ID=…}}` |
+| weitere Vorlagen | `{{Abk}}`, `{{DynamicInfoPopover}}`, Bilder mit `{{BildQuelle}}` | `{{Strukturdaten}}`, Bilder mit `{{BildMeta}}` |
+| Kategorie | `CBD`, `Band 1` … `Band 14` | `CbDD` |
+| Gliederung | feste Labels, s. u. | freie, beschreibende Überschriften |
 
-Bevor du einen Treffer auswertest, bestimme das Korpus — Struktur und Zitierweise unterscheiden sich:
+Die Kopfvorlage ist der sichere Test; die Kategorie ist gleichwertig, wenn nur Metadaten vorliegen. Geographie als Heuristik: außerhalb Oberbayerns immer CbDD; in Oberbayern können beide Korpora denselben Bau behandeln — dann beide nennen. Was unten über Labels, `{{Abk}}`, Popover und Bildfeld-Kürzel steht, gilt **nur für CBD**. Parameter aller Vorlagen: `references/templates-and-categories.md`.
 
-- **Kategorie** `CBD` → gedruckter Korpus (Oberbayern); **Kategorie** `CbDD` → modernes Online-Korpus (ganz Deutschland). Mit `get-category-members` lassen sich beide Bestände gezielt getrennt durchsuchen.
-- **Vorlagen** im Quelltext: `{{Artikel}}` + `{{BildQuelle}}` → CBD; `{{Artikel-modern}}` + `{{Strukturdaten}}` + `{{BildMeta}}` → CbDD.
-- **Geographie als Heuristik:** Liegt der Ort außerhalb Oberbayerns, ist der Treffer praktisch immer CbDD. Innerhalb Oberbayerns können beide Korpora denselben Ort behandeln.
+## Leseplan — der kürzeste Weg je Frage
 
-Die Vorlagen tragen strukturierte Sachdaten (Band/Seite, AutorIn, deckenmalerei.eu-UUID, Wikidata-Qid, Bildrechte) und sind oft die präziseste Informationsquelle — Parameterlisten und Kategorienlogik beider Korpora stehen in `references/templates-and-categories.md`. Bei der ersten Bearbeitung eines Eintrags einmal nachlesen.
+| Frage | Aufrufe |
+|---|---|
+| Bau bekannt | `search-page-by-prefix` mit `Ort, ` (Lemma = `Ort, Bauwerk`, historischer Ortsname) |
+| Auftraggeber, Maler, Datierung (CBD) | `get-page` mit `section=0` — die Labels stehen im Lead |
+| Technik, Maße, Zustand (CBD) | `section` *Befund* (meist 1) |
+| Bildprogramm, Inhalt eines Bildes | Outline (`metadata=true`, `content="none"`), dann *Beschreibung*/*Ikonographie*; für das Programm zusätzlich Sektion 0 |
+| Was zeigt Bild A? | Bildfeld-Kürzel im Text → Datei aus `bild=` bzw. Bildunterschrift → `get-file-data` |
+| CbDD-Artikel | Outline, dann die passenden Sektionen oder die ganze Seite |
+| Werke eines Malers | Suche (s. u.) → Treffer gesammelt mit `get-pages` (bis 50 Titel) lesen |
+| Vergleich mehrerer Bauten | `get-pages` statt Einzelaufrufe |
 
-## Wie eine Anfrage abläuft
+Bei abgeschnittenen Seiten mit `section=N` weiterlesen, nicht die ganze Seite neu holen.
 
-Die meisten Anfragen folgen einem von drei Mustern. Wähle das passende, bevor du Werkzeuge aufrufst. Die Muster gelten für beide Korpora; bei CbDD-Treffern beachte die lockerere Seitenstruktur (s. u.).
+## Suchen
 
-**Muster 1 — Konkretes Objekt** („Was steht im Lab zur Pfarrkirche in Wessobrunn?“). Auflösung über `search-page-by-prefix` mit dem Ortsnamen plus Komma; Lemmata folgen dem Schema `Ort, Bauwerk` (z. B. `Wessobrunn, Pfarrkirche St. Johann Baptist`). Bei mehreren Treffern den historischen Rang/die Art des Bauwerks zur Disambiguierung heranziehen.
+`search-page` läuft über CirrusSearch; Operatoren lassen sich kombinieren und grenzen besser ein als Blättern (max. 100 Treffer):
 
-**Muster 2 — Themenrecherche** („Welche Marienprogramme finden sich im Landkreis Weilheim-Schongau?“). Auflösung über `search-page` mit gezielten Schlagworten; danach gezielt einzelne Seiten lesen. Für Landkreis-/Regionalabgrenzung siehe `references/corpus-volumes.md` — die Bände sind nach Landkreisen organisiert.
+- `incategory:CBD Günther` / `incategory:CbDD Asam` — Korpus trennen
+- `incategory:"Band 1" intitle:Pfarrkirche` — Band (Kategorien `Band 1` … `Band 14`, `Band 3-I`, `Band 3-II`, `Band 12-I`, `Band 12-II`)
+- `insource:"Autor und Entstehungszeit" "Matthäus Günther"` — Phrase im Quelltext (Regex-`insource:/…/` ist abgeschaltet)
+- `hastemplate:Artikel-modern Zimmermann` — über die Kopfvorlage
 
-**Muster 3 — Künstler-/Werkstattanfrage** („Welche Decken hat Matthäus Günther in Oberbayern bemalt?“). Auflösung über `search-page` mit dem Künstlernamen; die ermittelten Seiten dann einzeln auf Zuschreibung und Datierung im Block *Autor und Entstehungszeit* prüfen (siehe Seitenschema).
+**Register:** *Personenregister (Band N)*, *Ortsregister (Band N)*, *Ikonographisches Register (Band N)*, *Embleme-Register* und die Malerlisten (`Kategorie:Malerliste`, nur Bd. 8–14) enthalten nur Verweise auf Druckseiten. Als Antwortquelle taugen sie nicht — in Trefferlisten überspringen. Als **Index** sind sie für Vollständigkeitsfragen („alle Decken von X in Band 5“) aber der schnellste Weg: Register lesen, dann die genannten Artikel öffnen.
 
-## CBD-Seitenstruktur beachten — Sektionen UND Fettmarkierungen
+## CBD-Artikel lesen
 
-**Dies ist die wichtigste Eigenheit des gedruckten Korpus (CBD):** Eine CBD-Seite hat formal nur wenige Überschriften (`==`-Ebene), nur *Befund*, *Beschreibung*, *Ikonographie* und *Quellen und Literatur*. Die zentralen Sachangaben — *Patrozinium*, *Zum Bauwerk*, *Auftraggeber*, *Autor und Entstehungszeit*, *Literatur*, *Ikonographische Literatur* — stehen jedoch im Fließtext der Lead-Sektion und sind nur durch **fette Wikimarkup-Auszeichnung** (`'''…'''`) hervorgehoben. Sie tauchen daher in der Section-Outline der MCP-Tools **nicht** auf.
+Die Sachangaben stehen als **fette Labels mit Doppelpunkt** im Fließtext, nicht als Überschriften — die Section-Outline zeigt sie nicht:
 
-Konsequenz: `get-page` mit `section=N` allein verliert die zentralen Sachdaten. Verwende stattdessen einen der beiden Pfade:
+- Lead (Sektion 0): Zugehörigkeit und Rechtsstatus (ohne Label), `'''Patrozinium:'''`, `'''Zur Geschichte:'''`, `'''Zum Bauwerk:'''`, `'''Auftraggeber:'''`, `'''Autor und Entstehungszeit:'''`
+- `== Befund ==`: `'''Träger der Deckenmalerei:'''`, `'''Rahmen:'''`, `'''Technik:'''`, `'''Maße:'''` (oft als Tabelle), `'''Erhaltungszustand und Restaurierungen:'''`
+- `== Beschreibung ==` (bzw. *Beschreibung und Ikonographie*): je Bild ein Absatz, beginnend mit Bildfeld-Kürzel und Titel in Versalien: `A '''MARIA VOM SIEGE''' …`
+- `== Ikonographie ==`, `== Quellen und Literatur ==` (Aufzählung)
 
-- Für gezielte Sachfragen (Auftraggeber, Datierung, Maler): immer Sektion 0 (Lead) mitlesen oder die ganze Seite holen.
-- Für reine Beschreibungs-/Ikonographie-Fragen: zuerst `metadata=true, content="none"` zur Übersicht, dann gezielt `section=N` für *Beschreibung* oder *Ikonographie*.
+Bereinigte Artikel (bisher Band 1) tragen zusätzlich Markup — ältere Artikel haben es noch nicht, beides kommt vor:
 
-Die vollständige Liste der Fett-Felder und ihre Bedeutung steht in `references/page-schema.md` — bei der ersten Bearbeitung einer CBD-Seite einmal nachlesen. Die bibliografischen Eckdaten (Band, Seitenspanne, AutorInnen) stehen zusätzlich strukturiert in der Vorlage `{{Artikel}}` (siehe `references/templates-and-categories.md`).
+- **`{{Abk|LHs}}`** = die Abkürzung „LHs“; im Wiki mit Tooltip. In Antworten **nur den angezeigten Text** wiedergeben (`{{Abk|Bd|Bde.}}` → „Bde.“), nie die Vorlage. Auflösungen für alle Kürzel — allgemeine, Bibelbücher nach Vulgata, bibliographische Kurztitel, Bildfeld-Kürzel (`typ=Bildfeld`) — stehen gebündelt in **`Modul:Abk/Daten`**: einmal holen statt *Zur Benutzung* zu lesen. Allgemein verständliche Kürzel (St., S., vgl., hl.) sind nicht getaggt. Unbekannte landen in `Kategorie:Unbekannte Abkürzung` — dann nicht raten.
+- **`{{DynamicInfoPopover|Text|rolle=…|bild=…|qid=…}}`** markiert Bau (`rolle=Bauwerk`, der Text nach *Zum Bauwerk*), Personen (`Auftraggeber`, `Maler`, `Stuckateur`, `Baumeister`, `Person`) und Deckenbilder (`Deckenbild`). Wiedergeben nur `Text`. `bild=` ist die Bilddatei des Deckenbilds; `qid=` (sofern gesetzt) das Wikidata-Item der Person, des Baus oder Bildes — die präziseste Identifikation, die das Lab hat.
+- Bildfeld-Kürzel: `A`, `B` = Hauptbilder, `A<sub>1</sub>` … = Begleitbilder; Präfixe `EB`, `ED`, `EU`, `EW`, `K`, `M`, `N`, `O`, `S`, `U`, `V`, `W`, `Z` (Liste in `references/page-schema.md`). Die Bildunterschriften beginnen mit demselben Kürzel.
 
-## CbDD-Seitenstruktur — lockerer, beschreibende Überschriften
+Feldbedeutungen, Maßkonventionen und Maltechnik-Terminologie: `references/page-schema.md` — vor der ersten Detailfrage zu einem CBD-Artikel einmal lesen.
 
-CbDD-Artikel folgen **keinem** festen Schema. Sie verwenden frei formulierte, beschreibende Überschriften und sind unterschiedlich tief gegliedert (Beispiel: [Aschendorf, Herrenhaus und Amtssitz Altenkamp](https://badwcbd-lab.srv.mwn.de/index.php/Aschendorf,_Herrenhaus_und_Amtssitz_Altenkamp) mit Sektionen wie *Bauwerk*, *Malerei* mit Unterabschnitten, *Bibliographie*, *Einzelnachweise*). Die Fett-Marker-Konvention des CBD gilt hier **nicht**; lies bei CbDD-Treffern die Section-Outline (`metadata=true`) und dann die relevanten Sektionen, oder die ganze Seite.
+## CbDD-Artikel lesen
 
-Strukturierte Sachdaten stehen bei CbDD in den Vorlagen: `{{Artikel-modern}}` (Titel, Ort, Jahr, AutorIn, **deckenmalerei.eu-ID**) im Kopf und ein oder mehrere `{{Strukturdaten}}` (je `entity_id` für einen Datensatz, optional `wikidata_qid`). Diese IDs sind für die Zitierung wichtig (s. u.).
+Keine festen Labels, kein `{{Abk}}`, kein Popover. Outline lesen, dann die passenden Sektionen (*Bauwerk*, *Malerei* mit Unterabschnitten, *Bibliographie*, *Einzelnachweise* …). Strukturdaten stehen in `{{Artikel-modern}}` (`ID`, `Ort`, `Jahr`, `AutorIn1…6`) und einem `{{Strukturdaten|entity_id=…|wikidata_qid=…}}` je Datensatz (Bau, einzelnes Bild).
 
-## Strukturdaten: Wikidata-Integration nutzen
+## Strukturdaten und Wikidata
 
-Für **Fragen zu den Strukturdaten** (Verknüpfungen zwischen Malereien, Gebäuden und Personen; Ikonographie über Iconclass; Identität und Normdaten von Auftraggebern, Malern, Stuckatoren) nicht versuchen, deckenmalerei.eu direkt abzufragen, sondern die **(unvollständige) Wikidata-Integration** heranziehen:
+Für Verknüpfungen (Maler ↔ Werke, Auftraggeber, Normdaten, Iconclass) Wikidata heranziehen, nicht deckenmalerei.eu abfragen: fast alle CbDD-Gebäude, -Personen und iconclass-klassifizierten Malereien haben ein Item mit **Deckenmalerei.eu ID (`P10626`)** = `entity_id`/`ID` der Vorlagen. Bei CBD liefern `qid=` der Popover die Verknüpfung, soweit schon gesetzt. Dump der deckenmalerei.eu-Daten: <https://github.com/arthist-lmu/plafond3d/tree/main/dumps/deckenmalerei.eu>. Fehlt ein Item, die Lücke benennen — nicht aus Allgemeinwissen ergänzen.
 
-- Nahezu alle **Malereien mit Iconclass-Klassifikation**, fast alle **Gebäude** und fast alle **Personen** des CbDD haben einen Wikidata-Eintrag.
-- Diese Einträge tragen die Property **Deckenmalerei.eu ID** (`P10626`), die den Bezug zur `entity_id`/`ID` der `{{Strukturdaten}}`- bzw. `{{Artikel-modern}}`-Vorlagen herstellt — so lassen sich Wiki-Treffer und Wikidata-Objekte wechselseitig auflösen.
-- Es gibt einen regelmäßig aktualisierten **Dump**: <https://github.com/arthist-lmu/plafond3d/tree/main/dumps/deckenmalerei.eu/2026_04>. Er besteht aus drei miteinander in Bezug stehenden großen JSON-Dateien (zusammen ~33 MB) für Malereien, Gebäude und Personen.
+## Zitierweise — immer zwei Ebenen
 
-Die Abdeckung ist **unvollständig** — fehlt ein Wikidata-Eintrag oder eine `P10626`-Verknüpfung, die Lücke ehrlich benennen und auf den Wiki-Eintrag bzw. deckenmalerei.eu zurückfallen, nicht aus Allgemeinwissen ergänzen.
+1. **Wiki-Eintrag**: `https://deckenmalerei-lab.badw.de/index.php/<Titel>` (Leerzeichen → `_`; nie die interne `http://wiki/…`-URL).
+2. **Primärquelle**:
+   - **CBD**: Band und Seiten aus `{{Artikel|Band=…|Originalseitenvon=…|Originalseitenbis=…}}` (`Band=31` = 3/1, `122` = 12/2), volle Angabe nach `references/corpus-volumes.md`. Für **Band 4** zusätzlich die frei zugängliche Digitalisierung: `https://digi.ub.uni-heidelberg.de/diglit/cbdd_bd4/?page_query=<Seite>&action=pagesearch`. Fehlt die Seitenzahl, nur Band nennen — **keine Seite erfinden**.
+   - **CbDD**: `https://www.deckenmalerei.eu/<ID>` aus `{{Artikel-modern}}`; für einen einzelnen Datensatz `https://www.deckenmalerei.eu/<entity_id>`; ggf. `https://www.wikidata.org/wiki/<Qid>`.
 
-## Abkürzungen
+Beispiel CBD: „Die Freskierung von 1759 bezahlte Pfarrer Matthias Johann Nepomuk Bayerlacher ([Beuern, Pfarrkirche St. Michael](https://deckenmalerei-lab.badw.de/index.php/Beuern,_Pfarrkirche_St._Michael); CBD Bd. 1, S. 25–27).“
 
-Die CBD-Texte verwenden ein etabliertes Abkürzungssystem (z. B. `LKr.` = Landkreis, `LHs` = Langhaus, `QSch.` = Querschiff, `OB` = Oberbayern, `SSch.` = Seitenschiff). Es gilt für den gedruckten Korpus; CbDD-Artikel sind freier formuliert. Die Bildfeldbezeichnungen sind besonders wichtig:
+Paraphrasieren statt lange Passagen übernehmen; kurze Zitate mit Wiki-Titel und Primärquelle. Inschriften und Quellen werden im Wiki originalgetreu wiedergegeben (`Zimerman`, nicht „Zimmermann“); `(?)` markiert unsichere Lesungen, `[…]` Ergänzungen, `» «` Zitate.
 
-- Großbuchstaben (A, B, C…) bezeichnen **Hauptbilder**, Kleinbuchstaben/Ziffern **Begleitbilder**.
-- Sonderpräfixe: `EB` (Emporenbrüstung), `ED` (Emporendecke), `EU` (Emporenunterseite), `K` (Kapelle), `M` (Medaillon), `N`/`S` (Seitenschiff Nord/Süd), `Z` (Zwickel), `W` (Wand) u. a.
-- Anordnung bei Kirchen: in Richtung Hauptaltar; bei umlaufenden Begleitbildern im Uhrzeigersinn.
+## Bilder
 
-Vollständige Listen (allgemeine Abkürzungen, biblische Schriften nach Vulgata, bibliographische Sigeln wie `LCI`, `LThK`, `Dehio-Gall OB`, `Thieme-Becker`) stehen auf der Wiki-Seite *Zur Benutzung*. Bei unklaren Abkürzungen dort nachschlagen, nicht raten.
+`get-file-data` liefert eine skalierte Rendition zur echten Bildanalyse — bei Fragen zum Bildinhalt nutzen, sonst sparsam (Token). `get-file` für Metadaten/URL. **Rechte**: CBD-Abbildungen (`{{BildQuelle}}`) sind urheberrechtlich geschützt; CbDD-Abbildungen (`{{BildMeta}}`) tragen ihre Lizenz in `lizenz`/`cc` — nachsehen, nicht unterstellen.
 
-Inschriften erscheinen im Wiki kursiv; historische Schreibweisen werden originalgetreu wiedergegeben (`Zimerman` statt aufgelöst „Zimmermann“). Unsichere Lesarten sind durch `(?)` markiert, Ergänzungen verlorener Stellen durch eckige Klammern. Literaturzitate stehen in `» «`, Zitate im Zitat in `> <`.
+## Grenzen
 
-## Zitierweise
-
-Eine Antwort, die sich auf das Lab stützt, muss **zwei** Referenzebenen nennen: den Wiki-Eintrag als unmittelbare Quelle und die wissenschaftliche Primärreferenz. Letztere unterscheidet sich je Korpus.
-
-**Immer:** den Wiki-Eintrag als öffentliche URL — vollständiger Lemmatitel mit `https://badwcbd-lab.srv.mwn.de/index.php/<Titel>` (**nicht** die interne `http://wiki/...`-URL).
-
-**Bei CBD (gedruckt):** zusätzlich den **gedruckten Band** als Primärreferenz — Band-Nummer und vollständige bibliographische Angabe nach `references/corpus-volumes.md`. Die Band-Nummer steht in der Vorlage `{{Artikel|Band=…}}` bzw. ergibt sich aus dem Landkreis (z. B. Wessobrunn → LKr. Weilheim-Schongau → Bd. 1); die Seitenspanne liefern `Originalseitenvon`/`Originalseitenbis` derselben Vorlage. Beispiel: „Die Pfarrkirche St. Johann Baptist in Wessobrunn wurde 1759 unter Abt Beda Schallhammer ausgemalt (CBD Bd. 1, S. […]; [Wiki-Lemma](https://badwcbd-lab.srv.mwn.de/index.php/Wessobrunn,_Pfarrkirche_St._Johann_Baptist)).“ Steht keine Seitenzahl in der Vorlage, nur Band und Lemma nennen — **keine Seitenzahl erfinden**.
-
-**Bei CbDD (online):** zusätzlich die **deckenmalerei.eu-Datenbank** als Primärreferenz. Die URL wird aus der `ID` der Vorlage `{{Artikel-modern}}` gebildet: `https://www.deckenmalerei.eu/{ID}`. Für einen einzelnen Datensatz (Bauwerk, bestimmtes Deckenbild) die `entity_id` aus dem passenden `{{Strukturdaten}}` verwenden: `https://www.deckenmalerei.eu/{entity_id}`. Liegt eine `wikidata_qid` vor, kann sie ergänzt werden (`https://www.wikidata.org/wiki/{Qid}`). Beispiel: „Die Wandmalerei im Vestibül von Haus Altenkamp (Aschendorf) … ([Wiki-Lemma](https://badwcbd-lab.srv.mwn.de/index.php/Aschendorf,_Herrenhaus_und_Amtssitz_Altenkamp); [deckenmalerei.eu](https://www.deckenmalerei.eu/0c728050-c5af-11e9-893a-a37e5cdc9651)).“
-
-Niemals den Inhalt einer Wiki-Seite als eigene Forschungsleistung ausgeben. Niemals lange Passagen wörtlich übernehmen — paraphrasieren und kurze charakteristische Wendungen ggf. in Anführungszeichen. Bei direkten Zitaten Wiki-Titel + Primärreferenz (CBD-Band bzw. deckenmalerei.eu-URL) angeben. CbDD-Text steht unter CC BY 4.0; das erleichtert die Nachnutzung, ersetzt aber nicht die Quellenangabe.
-
-## Werkzeugaufrufe — sparsam und gezielt
-
-- **Trefferraten realistisch halten:** `search-page` liefert max. 100 Treffer pro Aufruf. Bei breiten Anfragen erst eingrenzen (Künstlername + Landkreis, Bauwerk + Auftraggeber), nicht paginieren.
-- **MediaWiki-Schnittstellen direkt nutzen:** Neben den MCP-Tools stellt das Wiki die **Action API** (`api.php`) bereit, darunter die Volltextsuche **CirrusSearch** (Elasticsearch — erlaubt Operatoren wie `incategory:`, `intitle:`, Phrasen-/Wildcard-Suche) und **OpenSearch** für Titel-Autocomplete (`action=opensearch`, läuft über die Action API). Das ist nützlich für präzisere oder kombinierte Abfragen, als die High-Level-MCP-Tools direkt anbieten.
-- **Register überspringen:** Das CBD enthält mehrere Register-Seiten — am Titelpräfix erkennbar (z. B. „Ortsregister …") und am Vorlagenfeld `|Meta=…-Register` bzw. `|Meta=Malerliste` in `{{Artikel}}`. Es sind: *Embleme-Register*, *Ikonographisches Register*, *Personenregister*, *Ortsregister* und die *Malerliste*. Sie enthalten nur Verweise mit Druckseitenzahlen, keine inhaltlichen Sachangaben — für fast alle Recherchen **wertlos** und zu ignorieren. Tauchen sie in Trefferlisten auf, überspringen und stattdessen den eigentlichen Objektartikel ansteuern.
-- **Truncation respektieren:** Wiki-Seiten werden bei 50 000 Bytes abgeschnitten, mit Hinweis auf verfügbare Sektionen. In dem Fall nachschlagend per `section=N` weiterlesen, nicht erneut die ganze Seite anfordern.
-- **Mehrere Lemmata gleichzeitig:** Für Vergleichsfragen (z. B. „die drei Marienkirchen im LKr. Dachau“) `get-pages` mit `titles=[…]` (bis 50 Titel) statt mehrerer Einzelaufrufe.
-- **Kategorien als Einstieg:** Wenn der Nutzer thematisch sucht, ist `get-category-members` oft schneller als Volltextsuche. Nützliche Kategorien sind `CBD` bzw. `CbDD` (Korpus), die AutorInnen-Kategorien, die Orts-Kategorien sowie bei CBD die Band-Kategorien. Die Kombination (z. B. Korpus + AutorIn) grenzt schnell ein. Welche Kategorien welcher Korpus setzt, steht in `references/templates-and-categories.md`.
-- **Bildinhalte visuell analysieren:** Fragt der Nutzer nach dem *konkreten Bildinhalt* einer Decke (was ist dargestellt, Figuren, Komposition), holt `get-file-data` die Datei serverseitig und liefert eine skalierte Rendition inline als Bild — so ist eine echte visuelle Bildanalyse möglich, auch wenn der Client den Wiki-Host nicht direkt erreicht. MediaWiki rastert Bilder, SVG, PDF und DjVu; andere Dateitypen (Audio, Video, Binärdateien) erzeugen einen Fehler — dafür sowie für reine Metadaten oder eine Download-URL `get-file` verwenden. Den Hinweis auf diese tiefere CV-Bildanalyse sparsam einsetzen (Token schonen), aber bei Bildinhaltsfragen anbieten. **Bildrechte beachten:** CBD-Abbildungen (`{{BildQuelle}}`) sind urheberrechtlich geschützt; CbDD-Abbildungen (`{{BildMeta}}`) tragen ihre Lizenz in den Parametern `lizenz`/`cc` — vor einer Aussage zur Nachnutzung dort nachsehen, nicht als frei nutzbar unterstellen.
-
-## Die beiden Korpora und ihr Verhältnis
-
-Verwende in Antworten stets den Namen **„Deckenmalerei-Lab"** für dieses Wiki-Werkzeug. Es vereint zwei Korpora, die nicht verwechselt werden dürfen:
-
-- **CBD** — der abgeschlossene **gedruckte** Korpus *Corpus der barocken Deckenmalerei* (Bauer/Rupprecht, Hirmer 1976–2010), 14 Bände, **nur Oberbayern**. Festes Editionsschema, Band-/Seiten-Zitierung, geschützte Abbildungen.
-- **CbDD** — das **moderne, fortlaufende** *Corpus der barocken Deckenmalerei in Deutschland* für **ganz Deutschland**. Hauptpublikation ist die Online-Datenbank [deckenmalerei.eu](https://www.deckenmalerei.eu/); die Einträge sind ins Lab kopiert. Lockere Struktur, Zitierung über die Wiki-Seite **und** die deckenmalerei.eu-URL (aus der `ID`/`entity_id` der Vorlagen).
-
-Das Lab ist im Rahmen des modernen Projekts entstanden und enthält **beide** Bestände. Ordne jeden Treffer zunächst einem Korpus zu (Kategorie `CBD`/`CbDD` bzw. Vorlagen) und richte Struktur-Erwartung und Zitierweise danach aus. Für Deckenmalerei außerhalb Oberbayerns ist allein CbDD einschlägig; für tiefere Detailtiefe in Oberbayern oft CBD. Für den jeweils aktuellen Forschungsstand und weiterführende Datensätze auf [deckenmalerei.eu](https://www.deckenmalerei.eu/) **verweisen** — die Datenbank als Quelle nennen, aber **nicht** anbieten, sie direkt abzufragen oder anderweitig mit ihr zu interagieren. Dieses Skill greift ausschließlich über den Lab-MCP-Server auf die Wiki-Kopie der Daten zu; eine eigene Schnittstelle zur deckenmalerei.eu-Datenbank gibt es hier nicht.
-
-## Was dieses Skill nicht abdeckt
-
-- Deckenmalerei außerhalb Deutschlands (Österreich, Italien u. a.) — auch CbDD endet an der Landesgrenze.
-- Deutsche Regionen außerhalb Oberbayerns, **sofern sie noch nicht in CbDD erfasst** sind: CbDD wächst, aber die Abdeckung ist nicht vollständig. Lücken ehrlich benennen, nicht durch Allgemeinwissen füllen.
-- Wand- und Tafelmalerei, sofern nicht in CBD/CbDD aufgenommen (Wandbilder werden nur kontextbedingt erfasst).
-- Restaurierungsgeschichte über die Notizen im *Befund* (CBD) bzw. die Artikelangaben (CbDD) hinaus.
-- Bearbeitende Edits am Wiki — der MCP-Server stellt nur Leseoperationen zur Verfügung.
-
-In diesen Fällen den Nutzer auf den Charakter der Korpora hinweisen und ggf. auf passendere Quellen verweisen (deckenmalerei.eu, Dehio-Handbücher, RDK, Thieme-Becker, regionale Inventare).
+- Außerhalb Deutschlands (Österreich, Italien …) und Regionen, die CbDD noch nicht erfasst — Lücken benennen, auf Dehio, RDK, regionale Inventare verweisen.
+- Wand- und Tafelmalerei nur, soweit in den Korpora erfasst; Restaurierungsgeschichte nur so weit wie *Befund* bzw. Artikel.
+- deckenmalerei.eu als Quelle nennen und verlinken, aber nicht anbieten, die Datenbank direkt abzufragen.

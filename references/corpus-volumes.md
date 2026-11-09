@@ -68,9 +68,11 @@ Das Sigel des gedruckten Korpus ist **CBD** (so auch die Wiki-Kategorie und der 
 
 ## Bestimmung der Bandnummer aus einem Wiki-Eintrag
 
-Die ersten Zeilen eines Eintrags nennen den Landkreis bzw. die Stadt. Beispiel: ein Eintrag „Wessobrunn, Pfarrkirche St. Johann Baptist“ enthält im Vorspann den Hinweis „Landkreis Weilheim-Schongau“ → Band 1.
+Die Bandnummer steht in `{{Artikel|Band=…}}` (`31` = 3/1, `32` = 3/2, `121` = 12/1, `122` = 12/2), die Seiten in `Originalseitenvon`/`Originalseitenbis`; zusätzlich setzt die Vorlage die Kategorie `Band N`. Der Landkreis im Lead bestätigt die Zuordnung nach der Tabelle oben.
 
-Wenn der Landkreis im sichtbaren Lead nicht eindeutig genannt ist, hilft `get-page-history`: das Wiki ist nach Erscheinungsjahr/Band importiert worden, und die Kategorien (sofern gepflegt) ordnen den Eintrag häufig direkt einem Band zu.
+## Frei zugängliche Digitalisierung
+
+**Band 4** (LKr. Fürstenfeldbruck) ist bei der UB Heidelberg frei digitalisiert: `https://digi.ub.uni-heidelberg.de/diglit/cbdd_bd4/?page_query=<Seite>&action=pagesearch` springt auf die Druckseite. Bei Band-4-Zitaten mit angeben.
 
 ## Was die Bände **nicht** abdecken
 

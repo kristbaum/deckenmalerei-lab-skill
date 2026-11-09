@@ -11,6 +11,8 @@ Der Skill braucht den Connector **Deckenmalerei-Lab**. Ein Skill kann Connectore
 1. In Claude.ai unter *Connectors* einen benutzerdefinierten Connector hinzufügen: Name `Deckenmalerei-Lab`, URL `https://deckenmalerei-lab.badw.de/mcp`
 2. Optional für Ikonographie: den Iconclass-Connector hinzufügen
 
+Ohne Connector weicht der Skill auf die öffentliche MediaWiki-API (`https://deckenmalerei-lab.badw.de/api.php`) aus, sofern Claude Webseiten abrufen kann (Web-Fetch bzw. Code-Ausführung) — langsamer und mit mehr Token, aber lesend voll funktionsfähig. Der Skill weist dann auf den Connector hin.
+
 Dann den Skill einrichten:
 
 1. [claude.ai/customize/skills](https://claude.ai/customize/skills) öffnen

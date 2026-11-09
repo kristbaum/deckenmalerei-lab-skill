@@ -19,7 +19,7 @@ for ref in $(grep -o 'references/[A-Za-z0-9_-]*\.md' SKILL.md | sort -u); do
 done
 
 # 3. Kernregeln in beiden Prompts (SKILL.md und Kurzfassung für kleine Modelle)
-for needle in "Artikel-modern" "Modul:Abk/Daten" "DynamicInfoPopover" "deckenmalerei-lab.badw.de/index.php"; do
+for needle in "Artikel-modern" "Modul:Abk/Daten" "Entität" "deckenmalerei-lab.badw.de/index.php" "deckenmalerei-lab.badw.de/mcp" "deckenmalerei-lab.badw.de/api.php"; do
 	for f in SKILL.md SMALL_MODELS_SYSTEM_PROMPT.md; do
 		grep -q "$needle" "$f" || { echo "FEHLER: $f erwähnt »$needle« nicht" >&2; fail=1; }
 	done

@@ -4,7 +4,7 @@
     {
       "id": 1,
       "prompt": "Wer hat die Ausmalung der Pfarrkirche St. Michael in Beuern bezahlt, und wer hat das Fresko gemalt?",
-      "expected_output": "Liest Sektion 0 von »Beuern, Pfarrkirche St. Michael« (CBD). Nennt Pfarrer Matthias Johann Nepomuk Bayerlacher als Auftraggeber und Johann Adam Schöpf (nicht Johann Nepomuk von Schöpf) als Maler, 1759, mit Begründung aus der Kirchenrechnung. Zitiert https://deckenmalerei-lab.badw.de/index.php/Beuern,_Pfarrkirche_St._Michael und CBD Bd. 1, S. 25–27. Keine {{Abk}}- oder {{DynamicInfoPopover}}-Syntax in der Antwort.",
+      "expected_output": "Liest Sektion 0 von »Beuern, Pfarrkirche St. Michael« (CBD). Nennt Pfarrer Matthias Johann Nepomuk Bayerlacher als Auftraggeber und Johann Adam Schöpf (nicht Johann Nepomuk von Schöpf) als Maler, 1759, mit Begründung aus der Kirchenrechnung. Zitiert https://deckenmalerei-lab.badw.de/index.php/Beuern,_Pfarrkirche_St._Michael und CBD Bd. 1, S. 25–27. Keine {{Abk}}- oder {{Entität}}-Syntax in der Antwort.",
       "files": []
     },
     {
@@ -16,7 +16,7 @@
     {
       "id": 3,
       "prompt": "Was ist auf Bild A<sub>2</sub> in der Kapelle St. Martin in Adelshausen zu sehen? Beschreib das Bild.",
-      "expected_output": "Findet die Bilddatei über bild= des Popovers bzw. die Bildunterschrift (Band01_chunk001_p011_img002.jpg), ruft get-file-data auf und beschreibt das Bild; ergänzt die Beschreibung aus dem Artikel. Weist darauf hin, dass CBD-Abbildungen urheberrechtlich geschützt sind.",
+      "expected_output": "Findet die Bilddatei über bild= von {{Entität}} bzw. die Bildunterschrift (Band01_chunk001_p011_img002.jpg), ruft get-file-data auf und beschreibt das Bild; ergänzt die Beschreibung aus dem Artikel. Weist darauf hin, dass CBD-Abbildungen urheberrechtlich geschützt sind.",
       "files": []
     },
     {
@@ -35,6 +35,12 @@
       "id": 6,
       "prompt": "Welche Deckenmalereien im Landkreis Fürstenfeldbruck behandelt das gedruckte Corpus, und wo kann ich die Seiten im Original nachlesen?",
       "expected_output": "Ordnet LKr. Fürstenfeldbruck Band 4 zu, nutzt die Kategorie »Band 4« bzw. das Ortsregister (Band 4) als Index. Nennt die frei zugängliche Heidelberger Digitalisierung (digi.ub.uni-heidelberg.de/diglit/cbdd_bd4) mit Seiten-Sprung.",
+      "files": []
+    },
+    {
+      "id": 7,
+      "prompt": "[Ohne Deckenmalerei-Lab-Connector, mit Web-Fetch] Wer hat die Ausmalung der Pfarrkirche St. Michael in Beuern bezahlt?",
+      "expected_output": "Weist zu Beginn kurz auf den Connector hin (https://deckenmalerei-lab.badw.de/mcp). Weicht auf die MediaWiki-API aus (prefixsearch oder action=parse&section=0&prop=wikitext bzw. action=raw unter https://deckenmalerei-lab.badw.de/), nur GET. Nennt Pfarrer Matthias Johann Nepomuk Bayerlacher, 1759, Maler Johann Adam Schöpf; zitiert Wiki-URL und CBD Bd. 1, S. 25–27. Antwortet nicht aus dem Gedächtnis.",
       "files": []
     }
   ]

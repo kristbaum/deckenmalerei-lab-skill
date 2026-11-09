@@ -33,6 +33,25 @@ Varianten: *Beschreibung und Ikonographie* als eine Sektion; ältere Artikel mit
 
 **Konsequenz:** Für Auftraggeber, Maler, Datierung immer Sektion 0 lesen; `section=N` allein verliert diese Angaben. Für das Bildprogramm Sektion 0 (Intention des Auftraggebers) **und** *Ikonographie*.
 
+## Normalisierung der Sektionsnamen
+
+Ausgezählt über alle 995 nicht bereinigten CBD-Artikel (`==`-Ebene; Häufigkeit in Klammern). Die Bereinigung vereinheitlicht nur Labels, nicht die Sektionsnamen — die Varianten bleiben. Diese Tabelle ordnet sie einer Standardsektion zu:
+
+| Standardsektion | Varianten im Wiki |
+|---|---|
+| **Befund** | Befund (871) |
+| **Beschreibung** — Bildeinträge mit Kürzel | Beschreibung und Ikonographie (661), Beschreibung (101), Rekonstruierende Beschreibung und Ikonographie (27), Bildabfolge (26), Darstellung (17), Darstellungen (9), Bildabfolge und Inschriften (5), Erste Ausstattung (5), Rekonstruierte/Rekonstruierende Bildabfolge, Rekonstruierende Beschreibung |
+| **Beschreibung** — nach Raum gegliedert (Schlösser, große Kirchen) | Raum- und Bauteilnamen: Altarraum, Fresko(en) im Altarraum, Vorhalle, Seitenschiffe, (Untere) Emporenbrüstung, Kreuzkapelle, Sebastianskapelle, Taufkapelle, Treppenhaus, Kaisertreppe, »Rundzimmer«, Schlafalkoven; nummerierte Raumfolgen (I Ritterstube, II Antecamera, VI Ankleidezimmer, VIII Galerie) |
+| **Ikonographie** — Deutung | Ikonographie (49), Ikonologie (36), Ergänzungen zur Ikonographie (16), Zur Ikonologie (12), Ikonographie und Ikonologie (11), OCR-Reste wie „Ikonologi“ |
+| **Zeichnungen** — Entwürfe, Skizzen | Zeichnung (21), Zeichnungen (11), Entwurf, Entwurfszeichnungen |
+| **Quellen und Literatur** | Quellen und Literatur (736), Literatur zur Ikonographie (6), Nachrichten in den Quellen (4), Spezialliteratur zum … |
+| *Register* — keine Sachangaben | Ikonographisches Register, Embleme-Register, Ortsregister, Personenregister, Lateinische/Deutsche Lemmata, Bildmotive (auch in Versalien und OCR-verstümmelt: „IKONOGRAPHISCHES REGISTE“) |
+| *Rest aus dem Zerschneiden* — ignorieren | Überschrift des Folgeartikels am Artikelende (HAGNBERG, NEURIED, LUSTHAUS IM NACHMALIGEN HOFGARTEN, Filialkirche St. Katharina), eigener Ortsname am Anfang (WIES bei Steingaden), Bandteil-Titel (EINGEMEINDETE VORORTE, ANHANG VERLORENE DECKENMALEREIEN, NICHT HÖFISCHE BAUTEN); Text danach gehört oft zum nächsten Artikel |
+| *Bildeintrag als Überschrift* | `== A AUFFINDUNG DER GEBEINE … ==`, `== B1-8 DIE ACHT SELIGKEITEN ==` (rund 250×) — ist ein Bildeintrag der *Beschreibung*, keine Sektion |
+| *Artefakt* — ignorieren | in Versalien eingeschleppte Kolumnentitel (STADT FREISING, RAITENHASLACH, FÜRSTENFELD/„FURSTENEELD“, RESIDENZ, HERRENCHIEMSEE, INGOLSTADT KONGREGATIONSSAAL), Zwischentitel von Bildfolgen (GLORREICHER ROSENKRANZ, TERTULIN-SZENEN, a–d EMBLEME), DANK (Vorwort) |
+
+Faustregeln: Steht keine *Beschreibung*-Variante im Artikel, tragen die Raumnamen-Sektionen die Bildeinträge. Eine Versalien-Überschrift ist fast nie eine echte Sektion — der Text darunter gehört zur vorherigen. Die fetten Labels (*Patrozinium*, *Zum Bauwerk*, *Auftraggeber*, *Autor und Entstehungszeit*, *Träger der Deckenmalerei*, *Rahmen*, *Technik*, *Maße*, *Erhaltungszustand und Restaurierungen*) sind dagegen einheitlich (je 600–900 Artikel); in rund 140 Fällen fehlen Fettdruck oder Doppelpunkt (`Erhaltungszustand:`, `Maße `), *Zur Geschichte* kommt nur in 40 Artikeln vor.
+
 ## Markup bereinigter Artikel
 
 Bisher in Band 1; ältere Artikel haben es nicht.
@@ -43,21 +62,25 @@ Bisher in Band 1; ältere Artikel haben es nicht.
 
 Alle Auflösungen stehen in **`Modul:Abk/Daten`** (Lua-Tabelle, aus *Zur Benutzung* übernommen): `abk` mit `typ = "allg"` (allgemein), `"bibel"` (Vulgata-Sigel, z. B. `Eccli` = Jesus Sirach, `Apoc` = Apokalypse) und `"bibl"` (Kurztitel wie `LCI`, `Thieme-Becker`, `Dehio-Gall OB`, `Ripa 1603`, `KDB I OB`), dazu `bildfeld`. Einträge mit `generisch = true` (St., S., vgl., hl., Bd, Nr. …) werden im Text nicht getaggt, sind aber aufgelöst. Ein Kürzel, das dort fehlt, nicht raten.
 
-### `{{DynamicInfoPopover|…}}` — Entitäten
+### `{{Entität|…}}` — Entitäten
 
 ```
-{{DynamicInfoPopover|<Text>|rolle=<Rolle>|bild=<Datei>|qid=<Q…>}}
+{{Entität|<Text wie gedruckt>|rolle=<Rolle>|titel=<Bildtitel>|bild=<Datei>|qid=<Q…>|id=<Kennung>}}
 ```
+
+Jede Entität ist **einmal** pro Artikel markiert — an der ersten Nennung (bei Personen an der ersten mit vollem Namen; bei Bildern am Eintragskopf).
 
 | Rolle | markiert |
 |---|---|
-| `Bauwerk` | den Text nach `Zum Bauwerk:` (der ganze Absatz) |
-| `Auftraggeber` | Auftraggeber im Absatz *Auftraggeber* |
-| `Maler`, `Stuckateur`, `Baumeister` | Künstler, v. a. in *Autor und Entstehungszeit* |
-| `Person` | andere historische Personen dort (Vermittler, Lehrer, Grundherr) |
-| `Deckenbild` | Bildfeld-Kürzel (`A`, `A<sub>2</sub>`) bzw. bei einem einzigen Bild dessen Titel |
+| `Bauwerk` | die Bezeichnung des Baus im ersten Satz (`Pfarrkirche`, `Kapelle im Holz Maria Eich`) |
+| `Raum` | Räume mit Malereien, erste Nennung (`Langhaus`/`LHs`, `Altarraum`/`AR`, `Chor`, `Empore`, `Vierung`, Säle) |
+| `Auftraggeber` | wer die Ausmalung beauftragt oder bezahlt hat |
+| `Maler`, `Stuckateur`, `Baumeister` | Künstler, in *Zum Bauwerk* und *Autor und Entstehungszeit* |
+| `Stecher`, `Kistler`, `Vergolder` | Kupferstecher, Schreiner/Kistler, Vergolder/Fassmaler |
+| `Person` | andere historische Personen (Vermittler, Lehrer, Grundherr, Pfarrer) |
+| `Deckenbild` | Bildfeld-Kürzel (`A`, `A<sub>2</sub>`, `1`) bzw. bei einem einzigen Bild dessen Titel |
 
-`bild=` = Bilddatei des Deckenbilds (für `get-file-data`). `qid=` = Wikidata-Item, wird nach und nach von der Wikidata-Extraktion gesetzt — fehlt es, ist die Entität noch nicht verknüpft, nicht unbekannt. Zitierte Forscher (Schulten, Keim …), Signaturen und dargestellte Heilige sind nicht markiert.
+Nur bei `Deckenbild`: `titel=` = Bildtitel ohne Kürzel (aus Bildunterschrift oder Eintragskopf, im Text nicht angezeigt), `bild=` = Bilddatei (für `get-file-data`). `qid=` = Wikidata-Item, wird nach und nach von der Wikidata-Extraktion gesetzt — fehlt es, ist die Entität noch nicht verknüpft, nicht unbekannt. Zitierte Forscher (Schulten, Keim …), Signaturen, Zitate und dargestellte Heilige sind nicht markiert. `id=` ist eine interne Kennung (8 Zeichen), über die die Wikidata-Extraktion ihre Aussagen der Stelle zuordnet — für Antworten bedeutungslos, nie zitieren. Nicht verwechseln mit `{{Strukturdaten}}` der CbDD-Artikel.
 
 ## Bildfeld-Kürzel
 

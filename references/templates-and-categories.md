@@ -7,8 +7,8 @@ Die Vorlagenparameter sind oft die präziseste Quelle für Band, Seiten, AutorIn
 | | CBD (gedruckt) | CbDD (online) |
 |---|---|---|
 | Kopfvorlage | `Artikel` | `Artikel-modern` |
-| Textvorlagen | `Abk`, `DynamicInfoPopover` (bereinigte Artikel) | — |
-| Strukturverknüpfung | `qid=` im Popover (soweit gesetzt) | `Strukturdaten` (`entity_id`, `wikidata_qid`) |
+| Textvorlagen | `Abk`, `Entität` (bereinigte Artikel) | — |
+| Strukturverknüpfung | `qid=` in `Entität` (soweit gesetzt) | `Strukturdaten` (`entity_id`, `wikidata_qid`) |
 | Bildvorlage | `BildQuelle` | `BildMeta` |
 | Markerkategorie | `CBD` | `CbDD` |
 | weitere Kategorien | Band, Ort, AutorIn, Typ, Meta | Ort, AutorIn |
@@ -45,9 +45,9 @@ Erkennbar am Titel und an `|Meta=…`: `Personenregister (Band N)`, `Ortsregiste
 
 `{{Abk|Kürzel}}` oder `{{Abk|Kürzel|angezeigt}}`; `typ=Bildfeld` für Bildfeld-Kürzel. Gibt `<abbr title="Auflösung">` aus; bibliographische Kurztitel verlinken auf *Zur Benutzung*. Die Tabelle steht in `Modul:Abk/Daten` (Felder `voll`, `typ` = `allg`/`bibel`/`bibl`, `generisch`). Unbekannte Kürzel → `Kategorie:Unbekannte Abkürzung`.
 
-### `Vorlage:DynamicInfoPopover` / `Modul:DynamicInfoPopover`
+### `Vorlage:Entität` / `Modul:Entität`
 
-`{{DynamicInfoPopover|Text|rolle=…|bild=…|qid=…}}` — markiert Bau, Personen und Deckenbilder; Rollen und Regeln in `page-schema.md`. Zeigt `Text` (mit Link auf `bild`, falls gesetzt) und beim Überfahren ein Popover mit Rolle, Bild und — bei gesetztem `qid` — Bezeichnung und Beschreibung aus Wikidata (über UnlinkedWikibase).
+`{{Entität|Text|rolle=…|titel=…|bild=…|qid=…|id=…}}` — markiert Bau, Räume, Personen und Deckenbilder, jede Entität einmal; `id` ist intern (ignorieren); Rollen und Regeln in `page-schema.md`. Zeigt `Text` (mit Link auf `bild`, falls gesetzt) und beim Überfahren ein Popover mit Titel, Rolle, Bild und — bei gesetztem `qid` — Bezeichnung und Beschreibung aus Wikidata (über UnlinkedWikibase). Nicht zu verwechseln mit `Vorlage:Strukturdaten` (CbDD).
 
 ### `Vorlage:BildQuelle` — CBD-Abbildungen
 
